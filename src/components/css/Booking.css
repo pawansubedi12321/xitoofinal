@@ -1,0 +1,395 @@
+/* form here it begins */
+   .custom-row{
+    width:99%;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(105, 13, 147, 0.80);
+    background: rgba(105, 13, 147, 0.30);
+    margin-top:10px;
+    margin-left:2px;
+    padding:10px ;
+
+}
+  .bookingimage{
+    width:60px;
+    /* height:60px; */
+    border: 3px solid  #9747FF;
+    border-radius: 10px;
+}
+
+
+  .fulldetail{
+    font-size: bold;
+    color:#FFF;
+    
+}
+
+  .status{
+    width:100%;
+  text-align: center;
+  font-family: Full Sans LC;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  color:#FFF;
+  display:flex;
+  align-items: center;
+  /* background-color: green; */
+  }
+  .pending{
+    width:100%;
+    border-radius: 10px;
+    background-color:#E0B027 ;
+    height:60px;
+    margin-top:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+.onwork{
+    width:100%;
+    border-radius: 10px;
+    background-color:green ;
+    height:60px;
+    margin-top:10px;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    font-size:16px;
+    
+}
+
+
+  .completed{
+    width:100%;
+    border-radius: 10px;
+    background-color:#690D93;
+    height:60px;
+    margin-top:10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+
+
+  .appoint{
+
+    width:100%;
+    border-radius: 10px;
+    background-color:#C33229 ;
+    height:60px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+  .eyeicon{
+    display: flex;
+width: 56px;
+height: 56px;
+padding: 0px 17.55px 0px 17px;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+border-radius: 16px;
+background: #690d934d;
+
+color:#FFF
+
+}
+  .secondcolumn{
+    width:83.2%;
+  }
+  .firstcolumn{
+    height:100%;
+    /* background-color: red; */
+    border-right: 3px solid white;
+    /* width:100%; */
+  }
+  .topbar{
+    width:100%;
+
+  }
+  body{
+    overflow-x: hidden;
+  }
+  .notificationicon{
+    display: flex;
+    height:40px !important;
+    width:40px !important;
+    /* width:30px; */
+    justify-content: center;
+    align-items: center;
+    
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 2px solid #690D93;
+    color: #FFF;
+    }
+  @media screen and (max-width:992px) {
+    .images-x{
+        display:none;
+    }
+    
+    .firstcolumn{
+        
+        height:100px;
+        width:100%;
+        border-right:unset;
+    }
+    .secondcolumn{
+        width:100%;
+        height:0px;
+    }
+    .img{
+        width:100px !important;
+        height:100px !important;
+    }
+    
+    .secondpage{
+        height:0vh !important;
+    }
+    .textarea-x{
+        width:200px;
+    }
+    .showitem{
+        display:none;
+    }
+    .notificationicon{
+      display:none !important;
+    }
+   
+  }
+  .section-padding{
+    padding: 20px;
+  }
+  .section-bg{
+    overflow-y: scroll;
+    background-color: #2F0443;
+    height:100vh;
+    
+  }
+  .secondpage{
+    background:#260536;
+    border-radius: 20px;
+    height:95vh;
+    /* height:85vh; */
+  }
+  .topbar{
+    display:flex;
+    align-items: center;
+  
+  }
+  
+  .img{
+    height:200px;
+    width:200px;
+  }
+  .search{
+    display:flex;
+    justify-content: center;
+    position:relative;
+  }
+  .scroll{
+    width:99.5%;
+    overflow-y: scroll;
+    margin-left:1%;
+    
+    height:75.5vh;
+    
+  
+  }
+
+  .scroll::-webkit-scrollbar {
+    width: 7px;
+  }
+  .scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.50);; 
+    border-radius: 10px;
+  }
+  .problemlist{
+    color:white;
+    margin-left:1%;
+  }
+    .verticalline{
+        width:2px;
+        height:100%;
+        background-color: #FFF;
+        /* position:absolute; */
+    
+    }
+.bookimg{
+    display:flex;
+    align-items: center;
+}
+.details{
+    padding:10px 10px 10px;
+}
+.statusandeye{
+    display:flex;
+    align-items: center;
+    border-top-right-radius: 10px;
+    position:relative;
+}
+.statusandeye::before{
+  position:absolute;
+  content:"";
+  height:95px;
+  width:2px;
+  border-right:1px solid white;
+  right:82px;
+}
+.status{
+    margin-right:15px;
+}
+.verticalline{
+    margin-right:15px;
+}
+.booking{
+  display:flex;
+  justify-content: center;
+}
+.book-33{
+  color:#FFF;
+}
+.eye-icon{
+  display:flex;
+  justify-content:end;
+  align-items: center;
+}
+.fade{
+  color:#FFF;
+}
+.all-nav{
+  width:25px;
+  height:25px;
+  border-radius: 50px;
+  background-color:#861d96;
+  color:#FFF;
+  /* display:inline-block; */
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center
+  
+  /* display:inline; */
+}
+
+.completed-nav{
+  width:25px;
+  height:25px;
+  border-radius: 50px;
+  background-color: #690D93;
+  color:#FFF;
+  /* display:inline-block; */
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center
+  /* display:inline; */
+}
+.appoint-nav{
+  width:25px;
+  height:25px;
+  border-radius: 50px;
+  background-color: #C33229;
+  color:#FFF;
+  /* display:inline-block; */
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center
+  /* display:inline; */
+}
+.pending-nav{
+  width:25px;
+  height:25px;
+  border-radius: 50px;
+  background-color: #E0B027;
+  color:#FFF;
+  /* display:inline-block; */
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center
+
+}
+.onwork-nav{
+  width:25px;
+  height:25px;
+  border-radius: 50px;
+  background-color: green;
+  color:#FFF;
+  /* display:inline-block; */
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center
+
+}
+/* .nav-appoint,.nav-completed{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+} */
+@media screen and (max-width:431px) {
+  .img-dds{
+    width:250px;
+    height:250px;
+  }
+  
+ 
+}
+@media screen and (max-width:690px) {
+  .assistantname{
+    align-items: start !important;
+    
+
+  }
+  .assistantname::before,.statusandeye::before{
+    border-right:unset !important;
+   
+  }
+}
+.img-dds{
+  width:350px;
+  height:350px;
+}
+.nav-all,.nav-appoint,.nav-completed,.nav-pending,.nav-onwork{
+  display:inline-flex;
+  color:#FFF;
+  font-weight: 600;
+}
+.nav-all:hover,.nav-appoint:hover,.nav-completed:hover,.nav-pending:hover,.nav-onwork:hover{
+  /* display:inline-flex; */
+  color:#FFF;
+  /* font-weight: 600; */
+}
+.assistantname{
+  display:flex;
+  align-items:end;
+  flex-direction: column;
+  justify-content:center;
+  /* border-right:1px solid white; */
+  position:relative;
+
+}
+.assistantname::before{
+  
+  position:absolute;
+  content:"";
+  height:95px;
+  width:2px;
+  border-right:1px solid white;
+  right:5px;
+
+}
+.assistantname::after{
+  margin-bottom:100px;
+
+}

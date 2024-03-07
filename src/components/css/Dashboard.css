@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* from here it begins */
+.textarea-x {
+  display: flex;
+  height: 44px;
+  width: 20vw;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 2px solid #690d93;
+  background-color: #260536;
+  text-align: center;
+  
+}
+input::placeholder {
+  font-family: FullSansThin;
+}
+
+
+@font-face {
+  font-family: FullSansThin;
+  src: url(../fonts/FullSansLCThin.otf);
+}
+
+.statistics-x {
+  margin-left: 1%;
+  font-family: FullSans;
+  color: #fff;
+}
+.notificationicon:hover {
+  background-color: #690d93;
+}
+
+.images-x {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  margin-right: 14px;
+  margin-left: 20px;
+  border: 2px solid #690d93;
+  position: relative !important;
+}
+
+.images-abc {
+  right: 15px;
+  top: 70%;
+  width: 10px;
+
+  /* top:60px; */
+  position: absolute !important;
+}
+.content-a {
+  margin-top: 10px;
+  margin-left: 1%;
+}
+.total-x,
+.admin-x,
+.user-x,
+.spanworkers-x {
+  margin-top: 50px;
+  margin-left: 20px;
+  color: #fff;
+  font-family: FullSans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+@media screen and (max-width: 992px) {
+  .secondcol {
+    width: 100%;
+  }
+  .adminimg-x {
+    width: 150px !important;
+  }
+  .userimg-x,.workerimg-x {
+    width: 130px !important;
+  }
+}
+
+.no-of-admin-x,
+.no-of-user-x,
+.no-of-worker-x {
+  margin-left: 20px;
+  color: #fff;
+  font-family: FullSans;
+  margin-top: 50px;
+  font-size: 50px;
+}
+.total-admin-x {
+  height: 260px;
+  /* width:31.5%;
+    height: 190px; */
+  flex-shrink: 0;
+  border-radius: 36px;
+  border: 2px solid #690d93;
+  background: #3d0557;
+  position: relative;
+}
+
+.photo {
+  display: flex;
+  justify-content: end;
+}
+.adminimg-x,
+.workerimg-x {
+  position: absolute;
+  top: 20px;
+  width: 50%;
+}
+.userimg-x ,.workerimg-x{
+  top: 25px;
+  width: 40%;
+  position: absolute;
+}
+.total-users-x {
+  height: 260px;
+  flex-shrink: 0;
+  border-radius: 36px;
+  border: 2px solid #690d93;
+  background: #57054f;
+  position: relative;
+}
+
+.total-worker-x {
+  height: 260px;
+  flex-shrink: 0;
+  border-radius: 36px;
+  border: 2px solid #690d93;
+  background: #05574d;
+  position: relative;
+}
+.dash-teaxtarea,.cate-textarea{
+  border-radius:12px !important;
+}
+.search-text{
+  position:relative;
+}
+.search-icon{
+  position:absolute;
+  top:10px;
+  left:20px;
+
+
+}

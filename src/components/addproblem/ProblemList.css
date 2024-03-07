@@ -1,0 +1,378 @@
+.click-564 {
+  color: red;
+}
+.show_432 {
+  margin-top: 60px;
+  position: absolute;
+  z-index: 1;
+
+  width: 90px;
+  height: 90px;
+  right: 14px;
+  background-color: #d9d9d9;
+  position: absolute;
+  border-radius: 10px;
+  /* background-color: red; */
+}
+.edi-321 {
+  width: 90px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: #3d0557;
+  font-family: FullSans;
+}
+.delete-478 {
+  /* background-color: yellow; */
+  width: 90px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: #3d0557;
+  font-family: FullSans;
+  /* background-color: red; */
+}
+.edi-321:hover {
+  background-color: #fff;
+}
+.delete-478:hover {
+  background-color: #fff;
+}
+.edit-332 {
+  /* color:red; */
+}
+
+.problemimage {
+  /* width:50px;
+    height:35px; */
+  height: 100px;
+  width:100px;
+  /* position:absolute; */
+  border-radius: 8px;
+  border: 2px solid #9747ff;
+  /* margin-top:1%;
+margin-left:1%; */
+  background: url(<path-to-image>), lightgray 50% / cover no-repeat, #d9d9d9;
+  display: flex;
+  /* margin-top:1%;
+margin-left:1%; */
+  margin-left: 10px;
+}
+/* .timeandamount{
+    display:inline
+} */
+
+/* .addproblem{
+    margin-top:190px;
+    height:82.5%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.item-ddg {
+  position: absolute;
+  right: 25px;
+  top: 145px;
+  display: inline-flex;
+  padding: 16px 28px;
+  justify-content: center;
+  align-items: center;
+  /* gap: px; */
+  border-radius: 15px;
+  background: #690d93;
+  width: 195px;
+  color: white;
+  height: 50px;
+}
+.item-ddg:hover {
+  background-color: #9747ff;
+}
+.none {
+  display: none;
+}
+
+.img-ews {
+  width: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width: 1485px) {
+}
+
+@media screen and (max-width: 915px) {
+}
+.addproblem-x {
+  display: inline-flex;
+  padding: 16px 28px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 20px;
+  background: #690d93;
+  width: 215px;
+  color: white;
+}
+.addproblem-x:hover {
+  background-color: #9747ff;
+}
+.secondheading {
+  width: 100%;
+  height: 80px;
+  /* background-color: yellow; */
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.item_list {
+  margin-left: 20px;
+}
+
+.closebtn {
+  width: 40px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  right: 0;
+}
+
+.closebtn:hover {
+  background-color: #fff;
+  opacity: 50%;
+  color: #260536;
+}
+/* .closebtn-33{
+    width:40px;
+    height:50px;
+} */
+/* .icon{
+    margin-left:-30px;
+} */
+/* .problemname{
+     position:absolute; 
+    
+    width:500px;
+    height:80%;
+    border-radius: 20px;
+    width: 72px;
+height: 72px;
+flex-shrink: 0;
+border-radius: 16px;
+border: 2px solid #9747FF;
+background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
+} */
+@media screen and (max-width: 989px) {
+  .item-ddg {
+    margin-top: -5px;
+  }
+}
+@media screen and (max-width: 431px) {
+  .addproblem {
+    margin-top: 39px;
+    margin-left: -30%;
+  }
+}
+
+
+.addproblem {
+  display: flex;
+  justify-content: center;
+}
+.close {
+  position: absolute;
+  right: 0;
+}
+/* from here it begins */
+
+.prob {
+  color: #fff;
+  margin-left: 14px;
+}
+.empty-sx {
+  color: white;
+}
+.image-xxz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.problem-345::-webkit-scrollbar {
+  width: 7px;
+}
+.problem-345::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+.problem-345 {
+  align-items: center;
+  background-color: green;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 431px) {
+  .problem-xz {
+    margin-left: 0px;
+  }
+  .topbar {
+    height: 30px;
+  }
+  /* .firstcolumn{
+    position:sticky;
+  } */
+  /* .content {
+    position: sticky;
+    top: 0;
+    padding: 20px 10px;
+  } */
+  .problemimage{
+    width:100px;
+  }
+  .esttime,.amnt{
+    justify-content: start !important;
+    margin-top:10px;
+     }
+    .icon-32{
+        justify-content: start  !important;
+    }
+    .mx-4{
+        margin-left:0rem !important;
+    }
+
+  /* .time{
+    justify-content: start !important;
+  } */
+  /* .problem-345{
+            width:100%;
+        } */
+}
+@media screen and (max-width: 992px) {
+  .mx-2 {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+  }
+}
+
+.hey {
+  color: white;
+  /* text-align: center; */
+  display: flex;
+  /* margin-left:14px; */
+  /* justify-content: center; */
+  align-items: center;
+  /* background-color:yellow; */
+}
+.time {
+  color: White;
+  display: flex;
+  width:150px;
+  height: 45px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.25);
+  align-items: center;
+  justify-content: center;
+  /* padding:5px; */
+}
+
+.esttime {
+  display: flex;
+  justify-content: end;
+}
+.amnt {
+  display: flex;
+  justify-content: end;
+  border-radius: 20px;
+}
+.amount {
+  width:200px;
+  color: White;
+  display: flex;
+  height: 45px;
+
+  /* padding: 20px 16px; */
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.25);
+}
+.icon-32 {
+  display: flex;
+  justify-content: end;
+}
+.icon-327 {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: rgba(105, 13, 147, 0.4);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+.problem-xz {
+  flex-shrink: 0;
+  border-radius: 9px;
+  margin-top: 10px;
+  border: 1px solid rgba(105, 13, 147, 0.8);
+
+  background: #690d934d;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  justify-content: space-between;
+  padding: 15px;
+}
+.item_332 {
+  font-family: FullSansThin;
+
+  height: 47px;
+  background-color: #690d93;
+  border-radius: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  position: relative;
+
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.problemlist-ee3 {
+  height: 68vh;
+  overflow-y: scroll;
+}
+.problemlist-ee3::-webkit-scrollbar {
+  width: 7px;
+}
+.problemlist-ee3::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+.editicon {
+  color: #fff;
+}
+.deleteicon {
+  color: #fff;
+}
+
+.editbutton,
+.deletebutton {
+  background-color: red;
+  width: 200px;
+}

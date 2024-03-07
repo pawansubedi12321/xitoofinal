@@ -1,0 +1,222 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+
+
+
+.cate-321{
+    margin-top:100px;
+    transition: 5s ease;
+}
+.navbar-toggler{
+    background-color: white;
+    
+}
+
+
+
+/* .cate-321{
+    margin-top:100px;
+} */
+/* .color-321:hover{
+    margin-top:100px;
+} */
+.dash-d44{
+    z-index: 100;
+    color:white;
+}
+@media  screen and (max-width:431px) {
+    .uldd3{
+      
+        margin-left:-4%;
+    }
+    
+}
+.logout{
+    display:none;
+}
+
+@media screen and (max-width: 989px)
+{
+    .logout{
+        width:100%;
+        height:90px;
+        background-color:White;
+        margin-top:330px;
+        position:absolute;
+        left:0;
+        color:red;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .navbar{
+        width: 100%;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    background-color: #2f0443
+    }
+    .item-321{
+        position:absolute;
+        right:0;
+        top:40px; 
+    }
+    .dash443{
+        position:absolute;
+        right:0;
+        width:100%;
+        margin-top:50px;
+    }
+    .cate443{
+        position:absolute;
+        right:0;
+        width:100%;
+        margin-top:120px;
+
+    }
+    .que443{
+        position:absolute;
+        right:0;
+        width:100%;
+        margin-top:190px;
+
+    }
+    .book443{
+        position:absolute;
+        right:0;
+        width:100%;
+        margin-top:260px;
+
+    }
+    .uldd3{
+        width: 100%;
+    height: 89vh;
+    overflow: hidden;
+    position: absolute;
+    background-color: #53156f;
+    
+    }
+    /* .img-a{
+        width:100px;
+        height:100px;
+
+    } */
+    
+  
+ 
+}
+.design{
+    color:#690D93;
+}
+/* .navbar-expand-lg{
+    /* flex-direction: column;
+} */ 
+/* from here it begins */
+
+.navbar-toggler{
+    background-color: white;
+}
+/* .navbar-nav{
+    flex-direction: column;
+} */
+.navbar-expand-lg .navbar-nav {
+    flex-direction: column;
+}
+.navbar-expand-lg{
+    display:block;
+}
+
+/* .navbar-nav{
+    flex-direction:unset
+} */
+
+/* .navbar-nav{
+    flex-direction:row;
+
+} */
+/* .img{
+    width:300px;
+    height:300px;
+} */
+/* .images-a{
+    width:400px;
+    height:100px;
+
+} */
+/* from here it begins */
+.nav-32{
+    width:100%;
+}
+.nav-item{
+    
+    border: 1px solid #690D93;
+    border-radius: 10px;
+    height:50px;
+    position:relative;
+    display:flex;
+    align-items: center;
+    margin-bottom:10px;
+  }
+  .color-321{
+    width:2px;
+    height:65%;
+    /* margin-top:13px;
+    margin-left:10px; */
+    background-color:#FFF;
+    margin-left:10px;
+    border-radius: 10px;
+    margin-top:10px;
+    position:absolute;
+    /* border-radius: 10px;
+   
+    transition: 5s ease; */
+    
+}
+.dashboardpage,.categorypage,.bookingpage,.questionpage{
+    color:#FFF;
+    margin-left:40px;
+    font-family: FullSans;
+    
+}
+.emerge{
+    margin-top:150px;
+    color:#FFF;
+}
+.customize-nav{
+    height:38px;
+    position: absolute;
+    right:41px;
+    margin-top: 40px;
+   
+}
+.content{
+    padding:20px 10px;
+
+}
+@media screen and (max-width: 992px){
+    .popupnav{
+        height: 100vh;
+        background-color: #4d036f;
+        position:fixed;
+        left:0;
+        top:100px;
+        padding:20px;
+        overflow-y: scroll;
+       
+        /* overflow-y: hidden; */
+        /* position: fixed;
+        top: 150px; */
+        /* padding: 20px; */
+        /* left: 0; */
+        
+    
+    }
+
+}
+.cate,.dash,.que,.book{
+    background-color: #9747FF;
+}
+

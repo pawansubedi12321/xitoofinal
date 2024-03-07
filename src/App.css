@@ -1,0 +1,118 @@
+
+  *{
+    margin:0;
+    padding:0;
+  }
+  .firstpage{
+    background-color:#2F0443;
+    /* width:100vw; */
+    width:100vw;
+    height:100vh;
+    padding:10px;
+  }
+.your-element{
+
+display: inline-flex;
+height: 60px;
+padding: 10px 191px 10px 16px;
+align-items: center;
+flex-shrink: 0;
+border-radius: 16px;
+border: 1px solid ;
+margin-top:10px;
+width:100%;
+background-color:  #260536;
+color:#FFF;
+  }
+  li{
+    list-style: none;
+  }
+  
+  @media screen and (max-width: 1211px) {
+  .item-ddg{
+    margin-top:-65px;
+
+  }
+  }
+  
+    @media screen and (max-width: 1485px) {
+      
+      
+      
+      
+  
+      
+      /* .searchIcon{
+        margin-left:30px;
+      } */
+
+      
+  }
+ 
+  @media screen and (max-width: 1485px){
+
+  }
+ 
+  @media screen and (max-width: 1025px) {
+    .line,.head-a,.statistics-x,.text33d,.bookinglist{
+      display:none;
+    }
+    /* .textarea-x,.searchIcon{
+      display:none !important;
+    } */
+    /* .imagesection{
+      margin-left:-10% !important;
+      overflow-y: scroll;
+    } */
+    /* .statistics-x,.bookinglist,.imagesection{
+      margin-left:-100px !important;
+    } */
+   
+  }
+
+    @media screen and (max-width: 989px) {
+      /* .question{
+        margin-left:-100px;
+      } */
+     
+
+      
+     
+     
+      
+     
+
+      .navbar{
+        z-index: 1;
+    }
+    .additem44f{
+      margin-top:30px;
+      margin-left:-5% !important;
+    }
+  }
+ 
+  
+    
+    /* .dash-332,.cat-332,.que-332,.book-332
+    {
+      
+      width:260px !important;
+      margin-left:25px !important;
+    } */
+   
+    /* {
+      margin-top:68px !important;
+    } */
+    
+
+}
+
+  
+  
+
+
+.content-a::-webkit-scrollbar {
+  
+  width: 7px;
+  /* background-color: green;  */
+}
