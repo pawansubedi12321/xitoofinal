@@ -67,6 +67,7 @@ const QuestionPage = () => {
   const clicked = (index) => {
     seticonclicked(!iconclicked);
     setind(index);
+    navigate('/editquestion');
   };
 
   const downbutton = (index) => {

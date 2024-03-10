@@ -285,17 +285,7 @@ right:10px;
         margin-top:20px;
     }
     @media  screen and (max-width:992px) {
-        /* .addproblempage{
-            overflow-y: scroll;
-        }
-        .addproblempage::-webkit-scrollbar {
-            width: 7px;
-          }
-          .addproblempage::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 255, 255, 0.50);; 
-            border-radius: 10px;
-          } */
-          
+        
           .img-334{
            width:200px;
            height:200px;

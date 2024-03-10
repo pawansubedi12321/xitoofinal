@@ -139,8 +139,8 @@ const ProblemLIst = () => {
     setindexdata(index);
     console.log("iconclicked");
   };
-  const data = state.slice(1);
-  console.log(data);
+  // const data = state.slice(1);
+  // console.log(data);
   const deletedata = async (id) => {
     console.log("this is deletedata");
     console.log(id);
@@ -185,6 +185,10 @@ const ProblemLIst = () => {
     navigate("/CategoryPage");
   };
   console.log("this is data",Data);
+
+  const edit=()=>{
+    navigate('/editproblemlist');
+  }
 
   return (
     <div>
@@ -336,7 +340,7 @@ const ProblemLIst = () => {
                             onClick={() => iconclicked(index)}
                             key={index}
                           >
-                            <div className="icon-332 mx-4">
+                            <div onClick={edit} className="icon-332 mx-4">
                             <EditIcon className="editicon"/>
                             </div>
                             <div className="icon-332">

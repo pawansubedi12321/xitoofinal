@@ -39,6 +39,8 @@ import ShowPage from "../components/booking/ShowPage";
 import Edit from "../components/addcategory/Edit";
 import Trialpage from "../components/TrialPage";
 import EditStatus from "../components/booking/EditStatus";
+import Editproblemlist from "../components/addproblem/Editproblemlist";
+import EditQuestion from "../components/addquestion/EditQuestion";
 // import  ProblemList'../components/addproblem/ProblemList';
 const PublicRoutes = () => {
     
@@ -59,6 +61,8 @@ const PublicRoutes = () => {
             <Route path='/edit'element={<Edit/>}></Route>
             <Route path="/trialpage"element={<Trialpage/>}></Route>
             <Route path='editstatus'element={<EditStatus/>}></Route>
+            <Route path='/editproblemlist'element={<Editproblemlist/>}></Route>
+            <Route path='/editquestion'element={<EditQuestion/>}></Route>
         </Routes>
         </BrowserRouter>
     </div>

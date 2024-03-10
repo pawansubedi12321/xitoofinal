@@ -37,6 +37,7 @@ const CategoryPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [hidearrowicon, sethidearrowicon] = useState(false);
+  const[edit,setedit]=useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -157,9 +158,25 @@ const CategoryPage = () => {
 
     fetchData();
   };
-  const editdata = () => {
-    navigate("/edit");
+  const editdata = (item) => {
+    
+    const editeddata=categoryname.filter((data)=>data.id==item)
+    
+    setedit(editeddata);
+    
+    
+    // navigate("/edit");
+    
   };
+  console.log("This is edit data", edit);
+
+  // useEffect(() => {
+  //   // This code will run whenever edit changes
+  //   // You can add logic here to handle the changes in edit
+  //   // For example, if you want to call editdata whenever edit changes:
+  //   // editdata(/* pass item here if needed */);
+  //   console.log("This is edit data", edit);
+  // }, [edit]); // Include edit in the dependency array
   const Category =(value)=>{
     setname(value.name)
     // console.log("this is value",value.name);
@@ -297,7 +314,7 @@ const CategoryPage = () => {
                                     className={`edit-cate-icon`} onMouseEnter={() => mouseover(index)}
                                  
                                     // onClick={() => icon(index)}
-                                    onClick={editdata}
+                                    onClick={()=>editdata(item.id)}
                                     key={index}
                                   >
                                     <EditIcon />

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import "./Addproblem.css";
 import BackButton from "../addcategory/assets/BackButton.png";
@@ -13,7 +14,7 @@ import { addproblem, token } from "../api/API.jsx";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useMutation } from "react-query";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-const Addproblem = () => {
+const Editproblemlist = () => {
   const [image, setimage] = useState("");
   const [name, setname] = useState("");
   const [describe, setdescribe] = useState("");
@@ -47,7 +48,7 @@ const Addproblem = () => {
     let x = e.target.value;
     setdescribe(x);
     const length = x.length;
-    // const length = writeenvalue.current.value.length;
+
     setlength(length);
   };
   const Timeinterval = (e) => {
@@ -103,11 +104,11 @@ const Addproblem = () => {
   }
 
   const backbtn = () => {
-    navigate("/problemlist", { state: state });
+    navigate("/problemlist");
   };
 
   const crossbtn = () => {
-    navigate("/problemlist", { state: state });
+    navigate("/problemlist");
   };
   console.log("this is add problem list id");
   console.log(state);
@@ -128,7 +129,7 @@ const Addproblem = () => {
                   <ArrowBackIcon className="arrowbackicon"/>
                   <span onClick={backbtn} className="addproblem-save-btn">Back</span>
                   </div> */}
-                  <h9 className="add-question">ADD PROBLEM</h9>
+                  <h9 className="add-question">EDIT PROBLEM</h9>
                   <div
                     onClick={crossbtn}
                     src={Cross}
@@ -201,8 +202,6 @@ const Addproblem = () => {
                       <span className="Rs">Rs.</span>
                     </div>
                   </div>
-
-                  {/* <input  style={{color:"white"}}type="text"className='name'onChange={namevalue}placeholder='Typehere...'/> */}
                 </div>
               
                 <div className="col-md-5 image-savebtn">
@@ -238,4 +237,4 @@ const Addproblem = () => {
   );
 };
 
-export default Addproblem;
+export default Editproblemlist;
