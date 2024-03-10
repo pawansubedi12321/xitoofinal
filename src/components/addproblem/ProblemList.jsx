@@ -228,7 +228,7 @@ const ProblemLIst = () => {
               <div className={`col-md-12 content`}>
 
                 <div className="row mx-3 g-2">
-                <select  onChange={(event) => categorylist({ id: event.target.value, name: event.target.options[event.target.selectedIndex].text })} className={`col-md-2 select`}>
+                <select value=""  onChange={(event) => categorylist({ id: event.target.value, name: event.target.options[event.target.selectedIndex].text })} className={`col-md-2 select`}>
                 
                     <option>Category</option>
 

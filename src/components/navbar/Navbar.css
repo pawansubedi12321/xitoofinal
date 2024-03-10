@@ -32,6 +32,10 @@
       
         margin-left:-4%;
     }
+    .questioncontent{
+        height:unset !important;
+        display:unset !important;
+    }
     
 }
 .logout{
@@ -98,6 +102,10 @@
     position: absolute;
     background-color: #53156f;
     
+    }
+    .questioncontent{
+        height:unset !important;
+        display:unset !important;
     }
     /* .img-a{
         width:100px;
@@ -192,8 +200,21 @@
     margin-top: 40px;
    
 }
-.content{
+.questioncontent{
     padding:20px 10px;
+    height: 88vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.content{
+    padding: 20px 10px;
+   
+
+}
+.dashboardcontent{
+    padding: 20px 10px;
 
 }
 @media screen and (max-width: 992px){

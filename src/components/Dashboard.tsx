@@ -85,7 +85,7 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="col-md-12 content">
+              <div className="col-md-12 dashboardcontent">
                 {show ? (
                   <div className="showitem">
                     <div className="myprofile">My Profile</div>

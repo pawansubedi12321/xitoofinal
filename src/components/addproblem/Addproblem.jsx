@@ -122,10 +122,12 @@ const Addproblem = () => {
             <div className="addproblempage">
               <div className="row">
                 <div className="col-md-12 addprob-head">
-                  <div className="addproblem-backbutton">
+                <img className="backbutton"onClick={backbtn}src={BackButton} alt="backbutton"/>
+                  
+                  {/* <div className="addproblem-backbutton">
                   <ArrowBackIcon className="arrowbackicon"/>
                   <span onClick={backbtn} className="addproblem-save-btn">Back</span>
-                  </div>
+                  </div> */}
                   <h9 className="add-question">ADD PROBLEM</h9>
                   <div
                     onClick={crossbtn}

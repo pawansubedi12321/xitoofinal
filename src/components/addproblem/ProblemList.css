@@ -249,28 +249,16 @@ background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
         margin-left:0rem !important;
     }
 
-  /* .time{
-    justify-content: start !important;
-  } */
-  /* .problem-345{
-            width:100%;
-        } */
-}
-@media screen and (max-width: 992px) {
-  .mx-2 {
-    margin-right: 0px !important;
-    margin-left: 0px !important;
-  }
+ 
 }
 
 .hey {
   color: white;
-  /* text-align: center; */
+
   display: flex;
-  /* margin-left:14px; */
-  /* justify-content: center; */
+  
   align-items: center;
-  /* background-color:yellow; */
+ 
 }
 .time {
   color: White;

@@ -204,7 +204,7 @@ const CategoryPage = () => {
                   className="images-x"
                 />
                 {showicon ? (
-                  <img src={Arrow} alt="images" className="image-icon" />
+                  <img src={Arrow} alt="images" className="images-abc " />
                  ) : (
                    ""
                 )}

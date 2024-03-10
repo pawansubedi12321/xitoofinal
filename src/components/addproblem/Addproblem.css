@@ -273,11 +273,19 @@ right:10px;
         /* overflow-y: scroll; */
      
     }
+    .addstatuspage{
+        height:650px;
+        padding:15px;
+        background-color: #3D0557;
+        border-radius:20px;
+        /* overflow-y: scroll; */
+     
+    }
     .add-question-body{
         margin-top:20px;
     }
     @media  screen and (max-width:992px) {
-        .addproblempage{
+        /* .addproblempage{
             overflow-y: scroll;
         }
         .addproblempage::-webkit-scrollbar {
@@ -286,17 +294,8 @@ right:10px;
           .addproblempage::-webkit-scrollbar-thumb {
             background-color: rgba(255, 255, 255, 0.50);; 
             border-radius: 10px;
-          }
-          .mainpage{
-            overflow-y: scroll;
-          }
-          .mainpage::-webkit-scrollbar {
-            width: 7px;
-          }
-          .mainpage::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 255, 255, 0.50);; 
-            border-radius: 10px;
-          }
+          } */
+          
           .img-334{
            width:200px;
            height:200px;
@@ -308,6 +307,16 @@ right:10px;
         justify-content: space-between;
      
     }
+    .mainpage{
+        overflow-y: scroll;
+      }
+      .mainpage::-webkit-scrollbar {
+        width: 7px;
+      }
+      .mainpage::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.50);; 
+        border-radius: 10px;
+      }
     
     .name{
         padding-right:20px;

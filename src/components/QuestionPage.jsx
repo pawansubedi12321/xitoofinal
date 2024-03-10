@@ -134,7 +134,7 @@ const QuestionPage = () => {
                   </div>
                 </div>
 
-                <div className="col-md-12 content">
+                <div className="col-md-12 questioncontent">
                   {show ? (
                     <div className="showitem">
                       <div className="myprofile">My Profile</div>
@@ -189,7 +189,7 @@ const QuestionPage = () => {
                               <div className="col-md-5 icon-w2 gx-2">
                                 <div
                                   onClick={() => clicked(index)}
-                                  className={`icon-332`}
+                                  className={`mx-2 icon-332`}
                                   key={index}
                                 >
                                   <a title="edit"><EditIcon/></a>

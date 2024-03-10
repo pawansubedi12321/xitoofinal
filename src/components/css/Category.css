@@ -29,6 +29,7 @@
     text-transform: uppercase;
     font-weight: bold;
     font-family:FullSans;
+    border:none;
     
 }
 .item-xyz:hover{
@@ -160,6 +161,7 @@
     text-transform: uppercase;
     font-weight: bold;
     font-family:FullSans;
+    border:none;
 }
 .nullitem:hover{
     background-color: #9747FF;
@@ -373,13 +375,7 @@
   .headingimage{
     position:relative;
   }
-  .image-icon{
-    position:absolute;
-    right:17px;
-    width:10px;
-    top:35px;
-
-  }
+ 
 
   .select{
     padding-left: 16px;
