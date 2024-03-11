@@ -118,6 +118,7 @@ font-size:20px;
 }
 .backbutton{
     width:100px;
+    cursor: pointer;
 }
 
 @media screen and (max-width:431px) {

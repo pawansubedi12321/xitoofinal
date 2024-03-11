@@ -42,6 +42,7 @@ input::placeholder {
   margin-right: 14px;
   margin-left: 20px;
   border: 2px solid #690d93;
+  cursor: pointer;
   position: relative !important;
 }
 

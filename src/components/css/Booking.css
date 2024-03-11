@@ -98,7 +98,8 @@ flex-shrink: 0;
 border-radius: 16px;
 background: #690d934d;
 
-color:#FFF
+color:#FFF;
+cursor: pointer;
 
 }
   .secondcolumn{
@@ -129,6 +130,7 @@ color:#FFF
     border-radius: 8px;
     border: 2px solid #690D93;
     color: #FFF;
+    cursor: pointer;
     }
   @media screen and (max-width:992px) {
     .images-x{

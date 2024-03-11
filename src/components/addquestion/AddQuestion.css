@@ -106,6 +106,7 @@ text-transform: uppercase;
     color: #FFF;
     display: flex;
     align-items: center;
+    cursor: pointer;
     }
  .closebutton:hover{
         background-color: #FFF;

@@ -54,7 +54,7 @@ const Navbar = () => {
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto nav-32 popupnav">
-      <li onClick={()=>dashboard("dash")}className={`${clicked ==='dash'?"dash":""}  nav-item`}>
+      <li onClick={()=>dashboard("dash")}className={`${clicked ==='dash'?"dash":""} transform nav-item`}>
         <a class="nav-link" href="#">
             <>
                       
@@ -66,7 +66,7 @@ const Navbar = () => {
             
         </a>
       </li>
-      <li onClick={()=>category("cate")}className={`${clicked ==='cate'?"cate":""} nav-item`}>
+      <li onClick={()=>category("cate")}className={`${clicked ==='cate'?"cate":""} transform nav-item`}>
         <a class="nav-link" href="#">
 
             <>

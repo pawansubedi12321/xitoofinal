@@ -266,11 +266,11 @@ right:10px;
         justify-content: center;
     }
     .addproblempage{
-        height:650px;
+   
         padding:15px;
         background-color: #3D0557;
         border-radius:20px;
-        /* overflow-y: scroll; */
+        
      
     }
     .addstatuspage{

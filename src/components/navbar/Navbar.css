@@ -167,6 +167,7 @@
     display:flex;
     align-items: center;
     margin-bottom:10px;
+    cursor: pointer;
   }
   .color-321{
     width:2px;
@@ -240,4 +241,3 @@
 .cate,.dash,.que,.book{
     background-color: #9747FF;
 }
-

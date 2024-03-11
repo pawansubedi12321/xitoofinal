@@ -116,7 +116,7 @@ const Editproblemlist = () => {
   };
 
   const crossbtn = () => {
-    navigate("/problemlist");
+    navigate("/problemlist",{state:state.state.id});
   };
   console.log("this is add problem list id");
   console.log(state);
