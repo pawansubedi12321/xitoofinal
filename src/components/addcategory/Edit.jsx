@@ -22,6 +22,18 @@ const AddItems = () => {
   const location=useLocation();
   const state=location.state;
   const[img,setimg]=useState(null);
+
+  useEffect(()=>{
+    if(state){
+      setbackgroundimage(true);
+      
+      setimage(state[0].imagePath)
+    }
+    else{
+      
+    }
+  },[state])
+   
   try{
     if(state===null ||state==="")
     {
@@ -113,7 +125,7 @@ const AddItems = () => {
         <img className="additem-img" src={ImageFrameButton}/>
 
         {
-            backgroundimage?<img src={image} className='img-23'/>:""
+            backgroundimage?<img src={state[0].imagePath} className='img-23'/>:""
        }
 
         </div>
@@ -122,7 +134,7 @@ const AddItems = () => {
     <p className='ddf'>Provide category title.</p>
 
 </div>
-    <input style={{color: "white"}} type="text"onChange={text}placeholder="Type here.."className='dds-x'/>
+    <input  defaultValue={state[0].name} style={{color: "white"}} type="text"onChange={text}placeholder="Type here.."className='dds-x'/>
     <div className='save-btn'>
       <button className='save'onClick={()=>mutate({textdata:textdata,image:image})}>Save</button>
     </div>

@@ -36,33 +36,19 @@ const ProblemLIst = () => {
   const [categorydata, setcategorydata] = useState([]);
   const [uniquename, setuniquename] = useState([]);
   const { name, setname } = useContext(UserContext);
-  
-  console.log("this problem list");
-  console.log(state);
-  console.log("end");
-  // console.log("this is name",name);
-  // const problemlist =(value)=>{
-  //   console.log("this is problemlistid",value.id);
-  //   console.log("this is problem list",value.name);
-  //   setname()
 
-  // }
-
+  console.log("this is state",state);
     const categorylist=(value)=>{
-      console.log("this is problemlistid",value.id);
-    console.log("this is problem list",value.name);
+      
     setname(value.name);
     setselectcategory(value.id);
-    console.log("this is selectcategory",selectcategory);
+  
     
 
 
 
   }
-  // console.log("this is selectcategorybefore",selectcategory);
 
-
- 
   useEffect(() => {
   
     const fetchData = async () => {
@@ -83,20 +69,16 @@ const ProblemLIst = () => {
 
   useEffect(() => {
 
-    // const namesArray = Data.map((obj) => obj.name.toUpperCase());
+
     const namesArray=categorydata.map((obj)=>{
       return {id:obj.id,name:obj.name.toUpperCase()}
     })
-    console.log("this is namesarray from problemlist",namesArray);
+
     setuniquename(namesArray);
-    //      console.log("this is unique name");
-    //  console.log(namesArray);
-    //  console.log("End");
+   
   }, [categorydata]);
 
-  console.log("this is category data");
-  console.log(categorydata);
-  console.log("end");
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -113,11 +95,7 @@ const ProblemLIst = () => {
 
     fetchData();
   }, [selectcategory]);
-  console.log("this is  data");
-  console.log(Data);
-  console.log(Data.length);
  
-  console.log("end");
   localStorage.setItem("state", JSON.stringify(state));
   const navigate = useNavigate();
   const addproblempage = () => {
@@ -126,7 +104,7 @@ const ProblemLIst = () => {
   };
   const mouseover = () => {
     setdownload(true);
-    console.log("true");
+
   };
   const show_332 = () => {
     setshow(!show);
@@ -137,14 +115,13 @@ const ProblemLIst = () => {
   const iconclicked = (index) => {
     setclicked(!clicked);
     setindexdata(index);
-    console.log("iconclicked");
+ 
   };
-  // const data = state.slice(1);
-  // console.log(data);
+  console.log("this is data",Data);
+  console.log("this is state",state);
+
   const deletedata = async (id) => {
-    console.log("this is deletedata");
-    console.log(id);
-    console.log("this is end");
+    
     try {
       const response = await fetch(deleteproblemlist() + `${id}`, {
         method: "DELETE",
@@ -162,12 +139,13 @@ const ProblemLIst = () => {
       if (data) {
         alert("deleted succesfully");
       }
-      console.log("Response data:", data);
+
     } catch (error) {
       console.error("There was an error:", error);
     }
 
     const fetchData = async () => {
+      
       try {
         const response = await axios.get(`${problemlist()}/${state}/`, {
           headers: {
@@ -184,10 +162,15 @@ const ProblemLIst = () => {
   const closebutton = () => {
     navigate("/CategoryPage");
   };
-  console.log("this is data",Data);
+ 
 
-  const edit=()=>{
-    navigate('/editproblemlist');
+  const edit=(item)=>{
+    console.log("this is item",Data);
+
+    const editeddata=Data.filter((data)=>data.id==item)
+    console.log("this is edited data",editeddata);
+
+    navigate('/editproblemlist',{state:{editeddata:editeddata,id:state}});
   }
 
   return (
@@ -340,7 +323,7 @@ const ProblemLIst = () => {
                             onClick={() => iconclicked(index)}
                             key={index}
                           >
-                            <div onClick={edit} className="icon-332 mx-4">
+                            <div onClick={()=>edit(item.id)} className="icon-332 mx-4">
                             <EditIcon className="editicon"/>
                             </div>
                             <div className="icon-332">

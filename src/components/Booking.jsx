@@ -107,8 +107,10 @@ const Booking = () => {
     navigate("/showpage");
   };
 
-  const editstatus=()=>{
-    navigate('/editstatus');
+  const editstatus=(item)=>{
+    const editeddata=Data.filter((data)=>data.id==item)
+    console.log("this is item",editeddata);
+    navigate('/editstatus',{state:editeddata});
   }
 
   return (
@@ -321,7 +323,7 @@ const Booking = () => {
                              
                             </div>
 
-                            <div className="edit-status"onClick={editstatus}>
+                            <div className="edit-status"onClick={()=>editstatus(item.id)}>
                               <EditIcon/>
 
                             </div>

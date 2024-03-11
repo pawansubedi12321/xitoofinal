@@ -26,7 +26,14 @@ const Editproblemlist = () => {
   const [backgroundimage, setbackgroundimage] = useState(false);
   const [img, setimg] = useState(null);
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const state  = useLocation();
+  console.log("this is edited data",state)
+  // useEffect(()=>{
+  //   if(state)
+  //   {
+  //     setbackgroundimage(true)
+  //   }
+  // },[state]);
   const writeenvalue = useRef(0);
   const imagefile = (e) => {
     const x = e.target.files[0];
@@ -104,7 +111,8 @@ const Editproblemlist = () => {
   }
 
   const backbtn = () => {
-    navigate("/problemlist");
+    console.log("this is state id",state.state.id);
+    navigate("/problemlist",{state:state.state.id});
   };
 
   const crossbtn = () => {
@@ -155,6 +163,7 @@ const Editproblemlist = () => {
                       onChange={namevalue}
                       placeholder="Typehere..."
                       rows="3"
+                      defaultValue={state.state.editeddata[0].name}
                     />
                     <label className={`name-333`}>Name</label>
                   </div>
@@ -170,6 +179,7 @@ const Editproblemlist = () => {
                         class="shortdescription"
                         id="exampleFormControlTextarea1"
                         rows="3"
+                        defaultValue={state.state.editeddata[0].shortDescription}
                       ></textarea>
                       <div className="written">{length ? length : 0}/200</div>
                     </div>
@@ -184,6 +194,7 @@ const Editproblemlist = () => {
                           placeholder="0"
                           onChange={Timeinterval}
                           className=" text-32"
+                          defaultValue={state.state.editeddata[0].estTime}
                         />
                         <span className="hrs">hrs</span>
                       </div>
@@ -198,6 +209,7 @@ const Editproblemlist = () => {
                         placeholder="000.00"
                         onChange={Estamount}
                         className="text-44"
+                        defaultValue={state.state.editeddata[0].price}
                       />
                       <span className="Rs">Rs.</span>
                     </div>
@@ -209,7 +221,7 @@ const Editproblemlist = () => {
              <input type="file" required onChange={imagefile}className={`problem ${backgroundimage ?"none":""}`} accept="image/*"/>
             <img src={ImgFrame}className={`addimg ${backgroundimage ?"none":""}`}alt="bacground-col"/>
               {
-              backgroundimage?<img src={image} className='img-334'/>:""
+              backgroundimage?<img src={state.state.editeddata[0].imagePath} className='img-334'/>:""
             }
             </div>
             <div className="save-33">

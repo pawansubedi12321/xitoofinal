@@ -6,6 +6,9 @@ import {useNavigate ,useLocation, json} from "react-router-dom";
  import ClearIcon from '@mui/icons-material/Clear';
 const EditStatus = () => {
     const navigate = useNavigate();
+    const {state}=useLocation();
+    console.log("this is state",state)
+    // console.log("this is state",state[0].status.toUpperCase());
     const backbutton=()=>{
         navigate('/booking');
         
@@ -44,12 +47,13 @@ const EditStatus = () => {
             <div className='row edit-status-page'>
             <div className='col-md-12 editbooking-status'>
               <label className='booking-status'>Status:</label>
-              <select className='select-booking'>
+              {/* value={state[0].status.toUpperCase()} */}
+              <select  className='select-booking'>
                
-                <option>Appoint</option>
-                <option>Completed</option>
-                <option>Onwork</option>
-                <option>Pending</option>
+                <option  selected={state[0].status.toUpperCase() === "APPOINT"} value={state[0].status.toUpperCase()}>Appoint</option>
+                <option  selected={state[0].status.toUpperCase() === "COMPLETED"} value={state[0].status.toUpperCase()}>Completed</option>
+                <option selected={state[0].status.toUpperCase() === "ONWORK"}value={state[0].status.toUpperCase()}>Onwork</option>
+                <option selected={state[0].status.toUpperCase() === "PENDING"}value={state[0].status.toUpperCase()}>Pending</option>
                 
               </select>
             </div>

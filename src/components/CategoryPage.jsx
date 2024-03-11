@@ -37,7 +37,7 @@ const CategoryPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [hidearrowicon, sethidearrowicon] = useState(false);
-  const[edit,setedit]=useState([]);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -105,13 +105,7 @@ const CategoryPage = () => {
     const namesArray=Data.map((obj)=>{
       return {id:obj.id,name:obj.name.toUpperCase()}
     })
-    console.log("this is category",namesArray)
-    // console.log("this is namesArray");
-    // console.log(namesArray);
-    // console.log("end");
-    //  const uniqueNames = Array.from(new Set(namesArray.map((obj)=>obj.name)));
-
-    //  console.log("this is uniquenames",uniqueNames);
+   
     setcateogryname(namesArray);
   }, [Data]);
   const imageclicked = (ind, name) => {
@@ -160,23 +154,14 @@ const CategoryPage = () => {
   };
   const editdata = (item) => {
     
-    const editeddata=categoryname.filter((data)=>data.id==item)
-    
-    setedit(editeddata);
+    const editeddata=Data.filter((data)=>data.id==item)
     
     
-    // navigate("/edit");
+    
+    
+    navigate("/edit",{state:editeddata});
     
   };
-  console.log("This is edit data", edit);
-
-  // useEffect(() => {
-  //   // This code will run whenever edit changes
-  //   // You can add logic here to handle the changes in edit
-  //   // For example, if you want to call editdata whenever edit changes:
-  //   // editdata(/* pass item here if needed */);
-  //   console.log("This is edit data", edit);
-  // }, [edit]); // Include edit in the dependency array
   const Category =(value)=>{
     setname(value.name)
     // console.log("this is value",value.name);
@@ -184,6 +169,7 @@ const CategoryPage = () => {
     navigate('/problemlist',{state:value.id});
 
   }
+  console.log("THis is category data",Data)
   return (
     <div className="section-padding section-bg">
       <div className="row secondpage">
@@ -312,8 +298,6 @@ const CategoryPage = () => {
                                 <div className="img-editicon">
                                   <div
                                     className={`edit-cate-icon`} onMouseEnter={() => mouseover(index)}
-                                 
-                                    // onClick={() => icon(index)}
                                     onClick={()=>editdata(item.id)}
                                     key={index}
                                   >
@@ -332,13 +316,10 @@ const CategoryPage = () => {
                             )}
                             <div className="img-edit-delete-icon">
                               {
-                                // icon2===index?
                                 <div className="img-editicon">
                                   <div
                                     className={`edit-cate-icon`}
-                                 
-                                    // onClick={() => icon(index)}
-                                    onClick={editdata}
+                                    onClick={()=>editdata(item.id)}
                                     key={index}
                                   >
                                     <EditIcon />
