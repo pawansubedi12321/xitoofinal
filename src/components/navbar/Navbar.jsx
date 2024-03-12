@@ -54,25 +54,25 @@ const Navbar = () => {
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto nav-32 popupnav">
-      <li onClick={()=>dashboard("dash")}className={`${clicked ==='dash'?"dash":""} transform nav-item`}>
+      <li onClick={()=>dashboard("dash")}className={`${clicked ==='dash'?"dash":""} nav-item`}>
         <a class="nav-link" href="#">
             <>
                       
                       
                        <span className="dashboardpage">Dashboard</span>
-                      <div className='color-321'></div>
+                      <div className={`${clicked ==='dash'?'color-321':""}`}></div>
            </>
                       
             
         </a>
       </li>
-      <li onClick={()=>category("cate")}className={`${clicked ==='cate'?"cate":""} transform nav-item`}>
+      <li onClick={()=>category("cate")}className={`${clicked ==='cate'?"cate":""} nav-item`}>
         <a class="nav-link" href="#">
 
             <>
                      
                       <span className="categorypage">Category</span>
-                      <div className='color-321'></div>
+                      <div className={`${clicked ==='cate'?'color-321':""}`}></div>
                   
                       
                       </>
@@ -85,7 +85,7 @@ const Navbar = () => {
         <>
                      
                      <span className="questionpage">Questions</span>
-                     <div className='color-321'></div>
+                     <div className={`${clicked ==='que'?'color-321':""}`}></div>
                  
                      
                      </>
@@ -99,7 +99,7 @@ const Navbar = () => {
         <>
                      
                      <span className="bookingpage">Booking</span>
-                     <div className='color-321'></div>
+                     <div className={`${clicked ==='book'?'color-321':""}`}></div>
                  
                      
         </>

@@ -169,21 +169,7 @@
     margin-bottom:10px;
     cursor: pointer;
   }
-  .color-321{
-    width:2px;
-    height:65%;
-    /* margin-top:13px;
-    margin-left:10px; */
-    background-color:#FFF;
-    margin-left:10px;
-    border-radius: 10px;
-    margin-top:10px;
-    position:absolute;
-    /* border-radius: 10px;
-   
-    transition: 5s ease; */
-    
-}
+  
 .dashboardpage,.categorypage,.bookingpage,.questionpage{
     color:#FFF;
     margin-left:40px;
@@ -238,6 +224,51 @@
     }
 
 }
+.color-321{
+    width:2px;
+    height:65%;
+    background-color:#FFF;
+    margin-left:10px;
+    border-radius: 10px;
+    margin-top:0px;
+    position:absolute; 
+    overflow: hidden;
+    transition: 1s;
+  
+    /* transform: translateY(0px); */
+}
 .cate,.dash,.que,.book{
     background-color: #9747FF;
+    transition-property: transform;
+    overflow: hidden;
 }
+.dash:focus-within .color-321 ,
+.cate:hover .color-321,
+.que:hover .color-321,
+.book:hover .color-321
+{
+  transform: translateY(10px);
+  background-color: red;
+
+ 
+}
+/* .dash:hover::after{
+    background-color: green;
+    color:green;
+    content: '';
+} */
+
+/* .dash:hover .color-321::before ,
+.cate:hover .color-321::before,
+.que:hover .color-321::before,
+.book:hover .color-321::before
+{
+  transform: translateY(10px);
+  
+ 
+} */
+
+/* .cate:focus-within  .dash{
+    transform:translateY(38px);
+    background-color: red;
+} */

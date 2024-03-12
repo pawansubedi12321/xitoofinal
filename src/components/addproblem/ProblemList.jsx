@@ -184,17 +184,22 @@ const ProblemLIst = () => {
             <div className="row">
               <div className="col-md-12 topbar">
                 <h1 className="statistics-x">Category</h1>
+
                 <div class="input-group searchhere">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Searchhere..."
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                    className="textarea-x"
-                    style={{color:"#FFF"}}
-                  />
+              <div className="search-text">
+                <input
+                  type="text"
+                  class=" form-control"
+                  placeholder="Searchhere..."
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  className="cate-textarea textarea-x"
+                  style={{color:"#FFF"}}
+                />
+                <img src={SearchIcon}className="search-icon"alt="searchicon"/>
                 </div>
+              </div>
+                
                 <NotificationsIcon className="notificationicon" />
                 <div className="headingimage">
                   <img
