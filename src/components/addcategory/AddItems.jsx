@@ -50,12 +50,12 @@ const AddItems = () => {
       settextdata(x);
     }
 
+    
+
+   
+
     const save = async (e) => {
-      // e.preventDefault();
-      // console.log("this is img");
-      // console.log(image);
-      // console.log("close");
-      
+      e.preventDefault();
       try {
         const formData = new FormData();
         formData.append('name', textdata);
@@ -74,6 +74,7 @@ const AddItems = () => {
   
         const data = await response.json();
         console.log('Response data:', data);
+        
 
 
 
@@ -82,19 +83,15 @@ const AddItems = () => {
 
       }
       navigate('/CategoryPage');
+      
+    
     }
-
     const{mutate,isLoading,isError}=useMutation(save,{
       onSuccess:(successData)=>{
-        console.log(successData);
+        console.log("this is success Data",successData);
       },
     })
-    if (isLoading){
-      return <p>Loading...</p>
-    }
-    if(isError){
-      return <p>Something went wrong</p>
-    }
+
   const backbutton=()=>{
     navigate('/CategoryPage',{state:state});
   }
@@ -119,7 +116,7 @@ const AddItems = () => {
 
         </div>
 
-        <form>
+        <form onSubmit={save}>
         <div className='col-md-12 images-dds'>
         <input type="file" required onChange={imagefile} id="imageInput"className='image-ddf' accept="image/*"/>
 
@@ -137,7 +134,7 @@ const AddItems = () => {
 </div>
     <input style={{color: "white"}} type="text"onChange={text}placeholder="Type here.."className='dds-x'/>
     <div className='save-btn'>
-      <button className='save'onClick={()=>mutate({textdata:textdata,image:image})}>Save</button>
+      <button className='save'onClick={()=>mutate({textdata:textdata,image:image})}>{isLoading?<p>Loading...</p>:<p>Save</p>}</button>
     </div>
     </form>
         </div>

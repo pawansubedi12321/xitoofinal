@@ -212,7 +212,7 @@
         left:0;
         top:100px;
         padding:20px;
-        overflow-y: scroll;
+        /* overflow-y: scroll; */
        
         /* overflow-y: hidden; */
         /* position: fixed;
@@ -225,50 +225,71 @@
 
 }
 .color-321{
-    width:2px;
-    height:65%;
+    width:4px;
     background-color:#FFF;
     margin-left:10px;
     border-radius: 10px;
-    margin-top:0px;
-    position:absolute; 
+    height:35px;
+    /* height:30px; */
+    /* height:80px; */
+    /* margin-top: 10px; */
+    
+    /* margin-top:10px;  */
+    
+    position:absolute;
     overflow: hidden;
-    transition: 1s;
-  
-    /* transform: translateY(0px); */
+    animation-name:animate;
+    animation-duration: 1s;
+    transform: translateY(6px);
+
 }
+@keyframes animate{
+    0%{
+        height:0px;
+        position:absolute;
+    }
+    50%{
+        height:35px;
+        position:absolute;
+
+    }
+    100%{
+        height:35px;
+    }
+    /* 100%{
+        height:0px;
+    }
+     */
+
+}
+
+
 .cate,.dash,.que,.book{
     background-color: #9747FF;
     transition-property: transform;
     overflow: hidden;
+    transform: translateY(0px);
 }
-.dash:focus-within .color-321 ,
-.cate:hover .color-321,
-.que:hover .color-321,
-.book:hover .color-321
+.nav-link{
+    display:inline-flex;
+    align-items: center;
+    
+}
+/* .color-321::before{
+    content: "s";
+    background-color:yellow;
+    font-size: 20px;
+    transform: translateY(10px);
+
+} */
+/* .dash .color-321 ,
+.cate .color-321,
+.que:focus-within .color-321,
+.book:focus-within .color-321
 {
-  transform: translateY(10px);
+    
   background-color: red;
-
- 
-}
-/* .dash:hover::after{
-    background-color: green;
-    color:green;
-    content: '';
+  transform: translateY(30px);
 } */
 
-/* .dash:hover .color-321::before ,
-.cate:hover .color-321::before,
-.que:hover .color-321::before,
-.book:hover .color-321::before
-{
-  transform: translateY(10px);
-  
- 
-} */
 
-/* .cate:focus-within  .dash{
-    transform:translateY(38px);
-    background-color: red;
-} */

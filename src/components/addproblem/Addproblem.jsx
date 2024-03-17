@@ -95,9 +95,9 @@ const Addproblem = () => {
       console.log(successData);
     },
   });
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
+  // if (isLoading) {
+  //   return <p>Loading...</p>;
+  // }
   if (isError) {
     return <p>Something went wrong</p>;
   }
@@ -141,7 +141,7 @@ const Addproblem = () => {
               </div>
               <div className="add-question-body">
                 <p className="info">Provide more informations</p>
-                <form>
+                {/* <form onSubmit={save}> */}
                 <div className="row">
                
               
@@ -213,15 +213,16 @@ const Addproblem = () => {
               backgroundimage?<img src={image} className='img-334'/>:""
             }
             </div>
-            <div className="save-33">
-            <img src={Save} onClick={()=>mutate({name:name,interval:interval,describe:describe,amount:amount})}className="savebtn"alt="savebtn"/>
-            </div>
+            <div className='save-btn'>
+      <button className='save'onClick={()=>mutate({name:name,interval:interval,describe:describe,amount:amount,image:img})}>{isLoading?<p>Loading...</p>:<p>Save</p>}</button>
+    </div>
+           
         </div>
      
         
        
         </div>
-        </form>
+        {/* </form> */}
        
         
 

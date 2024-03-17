@@ -35,19 +35,7 @@ color:#FFF;
   }
   }
   
-    @media screen and (max-width: 1485px) {
-      
-      
-      
-      
-  
-      
-      /* .searchIcon{
-        margin-left:30px;
-      } */
-
-      
-  }
+   
  
   @media screen and (max-width: 1485px){
 
@@ -57,28 +45,12 @@ color:#FFF;
     .line,.head-a,.statistics-x,.text33d,.bookinglist{
       display:none;
     }
-    /* .textarea-x,.searchIcon{
-      display:none !important;
-    } */
-    /* .imagesection{
-      margin-left:-10% !important;
-      overflow-y: scroll;
-    } */
-    /* .statistics-x,.bookinglist,.imagesection{
-      margin-left:-100px !important;
-    } */
+    
    
   }
 
     @media screen and (max-width: 989px) {
-      /* .question{
-        margin-left:-100px;
-      } */
-     
 
-      
-     
-     
       
      
 
@@ -93,19 +65,10 @@ color:#FFF;
  
   
     
-    /* .dash-332,.cat-332,.que-332,.book-332
-    {
-      
-      width:260px !important;
-      margin-left:25px !important;
-    } */
-   
-    /* {
-      margin-top:68px !important;
-    } */
+    
     
 
-}
+
 
   
   

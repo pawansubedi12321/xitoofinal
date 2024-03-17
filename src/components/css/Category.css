@@ -207,9 +207,9 @@
     .p-2{
         padding:0rem!important;
     }
-    .lineargradient{
+    /* .lineargradient{
         top:170px !important;
-    }
+    } */
     
     
     
@@ -222,7 +222,7 @@
 }
   
   .img-xxs{
-    width: 212px;
+    width: 181px;
     object-fit: cover;
     object-position: center;
     border-radius: 25px;
@@ -271,7 +271,7 @@
     display:flex;
     justify-content: center;
     align-items:center;
-    width:212px;
+    width:181px;
     height:50px;
     font-family: FullSans;
     border-radius: 0px 0px 24px 24px;
@@ -289,7 +289,7 @@
     position:absolute;
     left:4px;
     /* top:72px; */
-    top:172px;
+    top:141px;
     text-align: center;
 }
 .edit-delete{
@@ -361,9 +361,9 @@
         flex-wrap: wrap;
         justify-content: center;
     } */
-    .lineargradient{
-        top:170px;
-    }
+    /* .lineargradient{
+        top:150px;
+    } */
    
     
    

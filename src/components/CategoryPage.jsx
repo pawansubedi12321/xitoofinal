@@ -169,7 +169,7 @@ const CategoryPage = () => {
     navigate('/problemlist',{state:value.id});
 
   }
-  console.log("THis is category data",Data)
+  // console.log("THis is category data",Data)
   return (
     <div className="section-padding section-bg">
       <div className="row secondpage">

@@ -4,6 +4,7 @@ import { UserContext } from '../../App';
 import './Navbar.css';
 import WhiteLogo1 from './assets/WhiteLogo1.png';
 //const UserContext=createContext();
+
 const Navbar = () => {
   
     const {clicked,setclicked}=useContext(UserContext);
@@ -19,6 +20,7 @@ const Navbar = () => {
     const category=(btn)=>{
         setclicked(btn);
         navigate("/CategoryPage");
+        console.log("this is category",btn);
         
       }
       const dashboard=(btn)=>{
@@ -38,7 +40,7 @@ const Navbar = () => {
         navigate("/booking");
        
       }
-
+      
   return (
     
     <div>
@@ -57,10 +59,10 @@ const Navbar = () => {
       <li onClick={()=>dashboard("dash")}className={`${clicked ==='dash'?"dash":""} nav-item`}>
         <a class="nav-link" href="#">
             <>
-                      
+            <div className={`${clicked ==='dash'?'color-321':""}`}></div>     
                       
                        <span className="dashboardpage">Dashboard</span>
-                      <div className={`${clicked ==='dash'?'color-321':""}`}></div>
+
            </>
                       
             
@@ -70,9 +72,9 @@ const Navbar = () => {
         <a class="nav-link" href="#">
 
             <>
-                     
+            <div className={`${clicked ==='cate'?'color-321':""}`}></div>
                       <span className="categorypage">Category</span>
-                      <div className={`${clicked ==='cate'?'color-321':""}`}></div>
+                     
                   
                       
                       </>
@@ -83,9 +85,10 @@ const Navbar = () => {
       <li onClick={()=>question("que")}className={`${clicked ==='que'?"que":""} nav-item`}>
         <a class="nav-link" href="#">
         <>
+        <div className={`${clicked ==='que'?'color-321':""}`}></div>
                      
                      <span className="questionpage">Questions</span>
-                     <div className={`${clicked ==='que'?'color-321':""}`}></div>
+
                  
                      
                      </>
@@ -97,9 +100,10 @@ const Navbar = () => {
       <li onClick={()=>booking("book")}className={`${clicked ==='book'?"book":""} nav-item`}>
         <a class="nav-link" href="#">
         <>
+        <div className={`${clicked ==='book'?'color-321':""}`}></div>
                      
                      <span className="bookingpage">Booking</span>
-                     <div className={`${clicked ==='book'?'color-321':""}`}></div>
+
                  
                      
         </>

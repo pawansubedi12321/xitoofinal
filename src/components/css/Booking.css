@@ -41,7 +41,7 @@
     border-radius: 10px;
     background-color:#E0B027 ;
     height:60px;
-    margin-top:10px;
+   
     display:flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +52,6 @@
     border-radius: 10px;
     background-color:green ;
     height:60px;
-    margin-top:10px;
     display:flex;
     align-items: center;
     justify-content:center;
@@ -66,7 +65,7 @@
     border-radius: 10px;
     background-color:#690D93;
     height:60px;
-    margin-top:10px;
+   
     display:flex;
     justify-content: center;
     align-items: center;
