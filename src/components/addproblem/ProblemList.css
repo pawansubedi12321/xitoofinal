@@ -255,9 +255,9 @@ background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
 .hey {
   color: white;
 
-  display: flex;
+  /* display: flex;
   
-  align-items: center;
+  align-items: center; */
  
 }
 .time {

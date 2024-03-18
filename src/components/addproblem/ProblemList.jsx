@@ -313,8 +313,11 @@ const ProblemLIst = () => {
                           <div className="col-md-1 problemimage">
                             <img className="problemimg" src={item.image} />
                           </div>
-                          <div className="col-md-2 hey">{item.name}</div>
-                          <div className="col-md-4 esttime">
+                          <div className="col-md-4 hey">
+                            <p>{item.name}</p>
+                            <p>{item.shortDescription}</p>
+                          </div>
+                          <div className="col-md-2 esttime">
                            
                             <div className="time">Time:{item.estTime}hrs</div>
                           </div>

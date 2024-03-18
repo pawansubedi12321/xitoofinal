@@ -103,8 +103,14 @@ const Booking = () => {
     setshow(!show);
   };
 
-  const showdata = () => {
-    navigate("/showpage");
+  const showdata = (item) => {
+    console.log("this is id",item);
+    // navigate("/showpage");
+    const showdata=Data.filter((data)=>data.id===item);
+    // console.log("this is data",showdata);
+    navigate('/showpage',{state:showdata});
+
+
   };
 
   const editstatus=(item)=>{
@@ -292,7 +298,7 @@ const Booking = () => {
                                   {item.timePeriod}
                                 </span>
                               </div>
-                              <div className="location">Location:panauti</div>
+                              <div className="location">Location:{item.location}</div>
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
@@ -332,7 +338,7 @@ const Booking = () => {
 
                              <div className="eye-icon">
                             <div className="verticalline"></div>
-                            <div className="eyeicon" onClick={showdata}>
+                            <div className="eyeicon" onClick={()=>showdata(item.id)}>
                               <RemoveRedEyeIcon />
                             </div>
                           </div>
@@ -411,7 +417,7 @@ const Booking = () => {
                               </div>
                             </div>
 
-                            <div className="edit-status">
+                            <div className="edit-status"onClick={()=>editstatus(item.id)}>
                               <EditIcon/>
 
                             </div>
@@ -494,7 +500,7 @@ const Booking = () => {
                               </div>
                             </div>
 
-                            <div className="edit-status">
+                            <div className="edit-status"onClick={()=>editstatus(item.id)}>
                               <EditIcon/>
 
                             </div>
@@ -577,7 +583,7 @@ const Booking = () => {
                               </div>
                             </div>
 
-                            <div className="edit-status">
+                            <div className="edit-status"onClick={()=>editstatus(item.id)}>
                               <EditIcon/>
 
                             </div>
@@ -659,7 +665,7 @@ const Booking = () => {
                                 <span>Status : {item.status.toUpperCase()}</span>
                               </div>
                             </div>
-                            <div className="edit-status">
+                            <div className="edit-status"onClick={()=>editstatus(item.id)}>
                               <EditIcon/>
 
                             </div>

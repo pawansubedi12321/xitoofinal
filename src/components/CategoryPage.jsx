@@ -169,7 +169,8 @@ const CategoryPage = () => {
     navigate('/problemlist',{state:value.id});
 
   }
-  // console.log("THis is category data",Data)
+  
+  console.log("THis is category data",Data)
   return (
     <div className="section-padding section-bg">
       <div className="row secondpage">
@@ -281,6 +282,7 @@ const CategoryPage = () => {
                   {Data == null
                     ? ""
                     : Data.map((item, index) => (
+
                         <>
                           <div className="category-img">
                             <img
