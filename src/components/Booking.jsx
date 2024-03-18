@@ -118,7 +118,7 @@ const Booking = () => {
     console.log("this is item",editeddata);
     navigate('/editstatus',{state:editeddata});
   }
-
+  
   return (
     <div className="section-padding section-bg" onMouseOut={mousedown}>
       <div className="row secondpage">

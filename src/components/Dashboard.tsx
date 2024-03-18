@@ -12,12 +12,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Arrow from "../assets/Arrow.svg";
 import { FormatColorResetOutlined } from "@mui/icons-material";
 import Navbar from "./navbar/Navbar.jsx";
+import Topbar from './Topbar/Topbar.jsx'
 const Dashboard = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const [color, setcolor] = useState("");
   const [click, setclick] = useState(false);
   const [show, setshow] = useState(false);
+  const[shownotificationicon,setshownotificationicon]=useState(false);
   const [showicon, setshowicon] = useState(false);
 
 
@@ -39,7 +41,7 @@ const Dashboard = () => {
     setshowicon(false);
 
   }
-  console.log(click);
+  console.log("this is notification",shownotificationicon);
   return (
     <div>
       <div className="section-padding section-bg" onMouseOut={mousedown}>
@@ -51,41 +53,20 @@ const Dashboard = () => {
 
           <div className="col-md-10 secondcol">
             <div className="row">
-              <div className="col-md-12 topbar">
-                <h1 className="statistics-x">Statistics</h1>
-                <div className="input-group search">
-                  <div className="search-text">
-                  <input
-                    type="text"
-                    placeholder="Search here..."
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                    className="textarea-x dash-teaxtarea"
-                    style={{color:"white"}}
-                  />
-                  <img src={SearchIcon}className="search-icon"alt="searchicon"/>
-                  </div>
-                 
-                </div>
-                <NotificationsIcon className="notificationicon" />
-                <div className="headingimage">
-                  <img
-                    src={Rectangle2}
-                    onMouseOver={mouseovericon}
-                    onMouseLeave={mouseleaveicon}
-                    onClick={show_332}
-                    alt="images"
-                    className="images-x"
-                  />
-                  {showicon ? (
-                    <img src={Arrow} alt="images" className="images-abc" />
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </div>
+              <Topbar shownotificationicon={shownotificationicon} setshownotificationicon={setshownotificationicon} setshowicon={setshowicon} show={show} showicon={showicon} setshow={setshow}/>
+              {/*  */}
 
               <div className="col-md-12 dashboardcontent">
+                {
+                  shownotificationicon?
+                  <div className="shownotification">
+                    <p>Hello world</p>
+                    </div>:""
+                }
+
+
+
+
                 {show ? (
                   <div className="showitem">
                     <div className="myprofile">My Profile</div>

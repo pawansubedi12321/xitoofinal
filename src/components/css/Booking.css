@@ -58,7 +58,58 @@
     font-size:16px;
     
 }
+.show-pending{
+  width:285px;
+  border-radius: 10px;
+  background-color:#E0B027 ;
+  height:60px;
+ 
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  margin-top:15px;
 
+}
+.show-onwork{
+  width:285px;
+  border-radius: 10px;
+  background-color:green ;
+  height:60px;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  font-size:16px;
+  margin-top:15px;
+
+}
+.show-completed{
+  width:285px;
+  border-radius: 10px;
+  background-color:#690D93 ;
+  height:60px;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  font-size:16px;
+  margin-top:15px;
+
+  /* padding-top:100px; */
+
+}
+
+.show-appoint{
+  width:285px;
+  border-radius: 10px;
+  background-color:#C33229  ;
+  height:60px;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  font-size:16px;
+  margin-top:15px;
+
+}
 
   .completed{
     width:100%;
@@ -117,6 +168,10 @@ cursor: pointer;
   body{
     overflow-x: hidden;
   }
+  .notification{
+    width:100% !important;
+    height:100% !important;
+  }
   .notificationicon{
     display: flex;
     height:40px !important;
@@ -130,6 +185,21 @@ cursor: pointer;
     border: 2px solid #690D93;
     color: #FFF;
     cursor: pointer;
+    position:relative;
+    line-height:16px;
+    /* line-height: 11px; */
+    font-size: 12px;
+    }
+    .noticationcount{
+      width:19px;
+      height:19px;
+      border-radius: 3px;
+      right:0;
+      background-color: #9747FF;
+      position:absolute;
+      color:#FFF;
+      display:flex;
+      justify-content: center;
     }
   @media screen and (max-width:992px) {
     .images-x{
@@ -343,8 +413,16 @@ cursor: pointer;
     width:250px;
     height:250px;
   }
+
   
  
+}
+@media screen and (max-width:768px){
+  .mx-2{
+    margin-left:unset !important;
+    margin-right:unset !important;
+  }
+
 }
 @media screen and (max-width:690px) {
   .assistantname{
@@ -356,6 +434,7 @@ cursor: pointer;
     border-right:unset !important;
    
   }
+  
 }
 .img-dds{
   width:350px;
@@ -455,4 +534,35 @@ cursor: pointer;
 }
 .showpagelist{
   color:#FFF;
+  display:flex;
+  height:500px;
+  align-items: center;
 }
+
+.show-booking,.booking-details,.assignandtransaction{
+  color:#FFF;
+  /* font-weight: bold; */
+}
+.booking-list{
+  height: 584px;
+  display:flex;
+  align-items: center;
+}
+.showpage-image{
+  /* width:91px; */
+  height:100px;
+  border: 2px solid yellow;
+  /* background-color: red; */
+}
+.shownotification{
+  position:absolute;
+  width:300px;
+  height:400px;
+  background-color:#3d0557;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    right:120px;
+    top: 100px;
+}
+

@@ -43,23 +43,56 @@ const ShowPage = () => {
         <ClearIcon className='clearicon'/>
         </div>
          </div> 
-
         </div>
         </div>
+        <div className='row g-1 booking-list'>
+          {/* <div > */}
+          {/* <div className='showpagelist'> */}
+          <div className='col-md-1  showpage-image '>
+            <img src=""alt="images"/>
+          </div>
+          <div className='col-md-4'>
+          
+          <p className='show-booking mx-2'><b>User Name: </b>pawan </p>
+          <p className='show-booking mx-2'><b>Problem Category: </b>laptop</p>
+          <p className='show-booking mx-2'><b>Description: </b>my lapptop is not working.</p>
+          <p className='show-booking mx-2'><b>Selected brand: </b>DEll</p>
+      
 
+          </div>
+          <div className='col-md-4 booking-details'>
+          <p><b>BookedDate:</b> {state[0].bookedDate}</p>
+          <p><b>AssignTo:</b> </p>
+          <p><b>CompletedData:</b> {state[0].completedDate}</p>
+          <p><b>Description:</b> {state[0].description}</p>
+          <p><b>ItemCount: </b>{state[0].itemCount}</p>
+          <p><b>Location: </b> {state[0].location}</p>
+          <p><b>ProblemInterval: </b>{state[0].problemInterval}</p>
+          <p><b>SelectedBrand:</b> {state[0].selectedBrand}</p>
+          <p><b>Status: </b>{state[0].status}</p>
+          <p><b>TimePeriod:</b> {state[0].timePeriod}</p>
 
-        <div className='row showpagelist'>
-          <p>bookedDate:{state[0].bookedDate}</p>
-          <p>assignTo:{state[0].assignTo}</p>
-          <p>completedData:{state[0].completedDate}</p>
-          <p>Description:{state[0].description}</p>
-          <p>itemCount:{state[0].itemCount}</p>
-          <p>Location:{state[0].location}</p>
-          <p>problemInterval:{state[0].problemInterval}</p>
-          <p>selectedBrand:{state[0].selectedBrand}</p>
-          <p>Status:{state[0].status}</p>
-          <p>timePeriod:{state[0].timePeriod}</p>
-          <p>transactionMode:{state[0].transactionMode}</p>
+          {/* <div className="show-status"> */}
+                              <div
+                                className={`${state[0].status === "appoint"? "show-appoint"
+                                : state[0].status === "pending"? "show-pending"
+                                : state[0].status === "onwork"? "show-onwork"
+                                : state[0].status === "completed"?"show-completed"
+                                : ""
+                                }`}
+                              >
+                                <span>Status : {state[0].status}</span>
+                              </div>
+                            {/* </div> */}
+          
+        </div>
+        <div className='col-md-3 assignandtransaction'>
+          <p><b>Assign To: </b>{state[0].assignTo}</p>
+          <p><b>Transaction Mode: </b>{state[0].transactionMode}</p>
+
+        </div>
+        {/* </div> */}
+        {/* </div> */}
         </div>
         </div>
         </div>
