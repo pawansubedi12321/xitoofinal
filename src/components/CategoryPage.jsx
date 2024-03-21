@@ -17,14 +17,13 @@ import { useQuery } from "react-query";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Topbar from './Topbar/Topbar.jsx'
 const CategoryPage = () => {
   const [addproblem, setaddproblem] = useState(false);
   const [empty, setempty] = useState(false);
   const [click, setclick] = useState(false);
   const [iconui, showiconui] = useState(true);
   const [icon2, seticon2] = useState("");
-  const [showicon, setshowicon] = useState(false);
-  const [show, setshow] = useState(false);
   const [categoryname, setcateogryname] = useState([]);
   const [iconclicked, seticonclicked] = useState("");
   const [Data, setData] = useState([]);
@@ -34,6 +33,11 @@ const CategoryPage = () => {
   const [mobileeditanddel, setmobileeditanddel] = useState();
   const { name, setname } = useContext(UserContext);
   const [mobileicon, setmobileicon] = useState("");
+
+  const [show, setshow] = useState(false);
+  const[shownotificationicon,setshownotificationicon]=useState(false);
+  const [showicon, setshowicon] = useState(false);
+
   const navigate = useNavigate();
   const location = useLocation();
   const [hidearrowicon, sethidearrowicon] = useState(false);
@@ -180,47 +184,17 @@ const CategoryPage = () => {
 
         <div className="col-md-9 col-sm-12 secondcolumn">
           <div className="row">
-            <div className="col-md-12 topbar">
-              <h1 className="statistics-x">Category</h1>
-              <div class="input-group searchhere">
-              <div className="search-text">
-                <input
-                  type="text"
-                  class=" form-control"
-                  placeholder="Searchhere..."
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                  className="cate-textarea textarea-x"
-                  style={{color:"#FFF"}}
-                />
-                <img src={SearchIcon}className="search-icon"alt="searchicon"/>
-                </div>
-              </div>
-              
-              <NotificationsIcon className="notificationicon" />
-              <div className="headingimage">
-                <img
-                  src={Rectangle2}
-                  onMouseOver={mouseovericon}
-                  onMouseLeave={mouseleaveicon}
-                  onClick={show_332}
-                  alt="images"
-                  className="images-x"
-                />
-                {showicon ? (
-                  <img src={Arrow} alt="images" className="images-abc " />
-                 ) : (
-                   ""
-                )}
-              </div>
-            </div>
+        
+          <Topbar shownotificationicon={shownotificationicon} setshownotificationicon={setshownotificationicon} setshowicon={setshowicon} show={show} showicon={showicon} setshow={setshow}/>
+          
+            
 
             {/* topadditem */}
-            <div className={`col-md-12 content${Data.length > 0 ? " " : ""}`}>
+            <div className={`${shownotificationicon?"hide":""} col-md-12 content${Data.length > 0 ? " " : ""}`}>
               {show ? (
                 <div className="showitem">
                   <div className="myprofile">My Profile</div>
-
+                  <hr></hr>
                   <div className="signout">Sign Out</div>
                 </div>
               ) : (
@@ -228,7 +202,7 @@ const CategoryPage = () => {
               )}
 
               <div className="row cateanditem">
-                <select className={` col-md-2  select`}onChange={(event) => Category({ id: event.target.value, name: event.target.options[event.target.selectedIndex].text })}>
+                <select className={`col-6 col-md-2  select`}onChange={(event) => Category({ id: event.target.value, name: event.target.options[event.target.selectedIndex].text })}>
                   <option>Category</option>
 
                   {Data === null
@@ -257,7 +231,7 @@ const CategoryPage = () => {
                 ) : (
                   <div
                     className={`${
-                      Data.length > 0 ? "col-md-10 additem-432" : "img-fff"
+                      Data.length > 0 ? "col-6 col-md-10 additem-432" : "img-fff"
                     }`}
                   >
                     <button
@@ -265,7 +239,7 @@ const CategoryPage = () => {
                       className={`${Data.length > 0 ? "item-xyz" : "nullitem"}`}
                     >
                       <span>
-                        <AddIcon />
+                        <AddIcon className="addicon" />
                       </span>
                       ADD ITEMS
                     </button>

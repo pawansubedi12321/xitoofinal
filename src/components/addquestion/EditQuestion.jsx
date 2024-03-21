@@ -123,7 +123,7 @@ const EditQuestion = () => {
  
 
             <button onClick={savebtn} className="savebutton-ddd">
-              SAVE
+              UPDATE
             </button>
             
             

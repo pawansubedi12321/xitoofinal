@@ -170,9 +170,18 @@ border-radius: 16px;
 border: 2px solid #9747FF;
 background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
 } */
-@media screen and (max-width: 989px) {
+@media screen and (max-width: 992px) {
   .item-ddg {
     margin-top: -5px;
+  }
+  .item_332{
+    height:auto;
+  }
+  .icon-32{
+    margin-top:10px;
+  }
+  .amnt{
+    margin-top:10px;
   }
 }
 @media screen and (max-width: 431px) {
@@ -220,13 +229,23 @@ background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
   flex-direction: column;
 }
 
-@media screen and (max-width: 431px) {
+@media screen and (max-width:576px) {
   .problem-xz {
     margin-left: 0px;
   }
-  .topbar {
-    height: 30px;
+  .item_332{
+    font-size:13px !important;
+    height:auto !important;
   }
+  .item_list{
+    width:120px;
+  }
+  .px-3{
+  
+    margin-right:unset!important;
+    margin-left:unset!important;
+  }
+ 
   /* .firstcolumn{
     position:sticky;
   } */

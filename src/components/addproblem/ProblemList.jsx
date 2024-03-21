@@ -23,7 +23,7 @@ import {
 } from "../api/API.jsx";
 import { UserContext } from "../../App.jsx";
 import { ConnectingAirportsOutlined } from "@mui/icons-material";
-
+import Topbar from '../Topbar/Topbar.jsx'
 const ProblemLIst = () => {
   const { state } = useLocation();
   const [selectcategory, setselectcategory]= useState([]);
@@ -31,12 +31,15 @@ const ProblemLIst = () => {
   const [addproblem, setaddproblem] = useState(false);
   const [indexdata, setindexdata] = useState("");
   const [download, setdownload] = useState(false);
-  const [show, setshow] = useState(false);
+  
   const [Data, setData] = useState([]);
   const [categorydata, setcategorydata] = useState([]);
   const [uniquename, setuniquename] = useState([]);
   const { name, setname } = useContext(UserContext);
-
+  
+  const [show, setshow] = useState(false);
+  const[shownotificationicon,setshownotificationicon]=useState(false);
+  const [showicon, setshowicon] = useState(false);
   console.log("this is state",state);
     const categorylist=(value)=>{
       
@@ -182,45 +185,13 @@ const ProblemLIst = () => {
           </div>
           <div className="col-md-9 col-sm-12 secondcolumn">
             <div className="row">
-              <div className="col-md-12 topbar">
-                <h1 className="statistics-x">Category</h1>
-
-                <div class="input-group searchhere">
-              <div className="search-text">
-                <input
-                  type="text"
-                  class=" form-control"
-                  placeholder="Searchhere..."
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                  className="cate-textarea textarea-x"
-                  style={{color:"#FFF"}}
-                />
-                <img src={SearchIcon}className="search-icon"alt="searchicon"/>
-                </div>
-              </div>
-                
-                <NotificationsIcon className="notificationicon" />
-                <div className="headingimage">
-                  <img
-                    src={Rectangle2}
-                    onMouseOver={mouseover}
-                    onMouseOut={mousedown}
-                    onClick={show_332}
-                    alt="images"
-                    className="images-x"
-                  />
-                  {download ? (
-                    <img src={Arrow} alt="images" className="images-abc" />
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </div>
+            <Topbar shownotificationicon={shownotificationicon} setshownotificationicon={setshownotificationicon} setshowicon={setshowicon} show={show} showicon={showicon} setshow={setshow}/>
+              
               <div className={`col-md-12 content`}>
 
-                <div className="row mx-3 g-2">
-                <select value=""  onChange={(event) => categorylist({ id: event.target.value, name: event.target.options[event.target.selectedIndex].text })} className={`col-md-2 select`}>
+
+                <div className="row px-3 g-2">
+                <select value=""  onChange={(event) => categorylist({ id: event.target.value, name: event.target.options[event.target.selectedIndex].text })} className={`col-md-2 col-4 select`}>
                 
                     <option>Category</option>
 
@@ -233,8 +204,8 @@ const ProblemLIst = () => {
                   </select>
 
             
-                  <div className="col-md-3">
-                    <div className="item_332">
+                  <div className="col-md-3 col-7 item_332">
+                    {/* <div className=""> */}
                     <span className="item_list">{name}</span>
 
                     <div className="closebtn">
@@ -243,11 +214,11 @@ const ProblemLIst = () => {
                         onClick={closebutton}
                       />
                     </div>
-                    </div>
+                    {/* </div> */}
                   </div>
                  
                   
-                  <div className={`${Data.length > 0 ? "col-md-7" : "none"}`}>
+                  <div className={`${Data.length > 0 ? "col-md-7 px-2 col-12" : "none"}`}>
                      <div className="additem-432">
                     <button
                       onClick={addproblempage}
@@ -269,7 +240,7 @@ const ProblemLIst = () => {
                 {show ? (
                   <div className="showitem">
                     <div className="myprofile">My Profile</div>
-
+                    <hr></hr>
                     <div className="signout">Sign Out</div>
                   </div>
                 ) : (

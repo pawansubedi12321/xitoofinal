@@ -10,8 +10,8 @@
     margin-top:100px;
     transition: 5s ease;
 }
-.navbar-toggler{
-    background-color: white;
+.navbar-toggler-icon{
+    filter:brightness(20);
     
 }
 
@@ -105,7 +105,7 @@
     }
     .questioncontent{
         height:unset !important;
-        display:unset !important;
+        /* display:unset !important; */
     }
     /* .img-a{
         width:100px;
@@ -124,9 +124,7 @@
 } */ 
 /* from here it begins */
 
-.navbar-toggler{
-    background-color: white;
-}
+
 /* .navbar-nav{
     flex-direction: column;
 } */
@@ -204,6 +202,7 @@
     padding: 20px 10px;
 
 }
+
 @media screen and (max-width: 992px){
     .popupnav{
         height: 100vh;
@@ -212,15 +211,8 @@
         left:0;
         top:100px;
         padding:20px;
-        /* overflow-y: scroll; */
-       
-        /* overflow-y: hidden; */
-        /* position: fixed;
-        top: 150px; */
-        /* padding: 20px; */
-        /* left: 0; */
-        
-    
+        z-index: 1;
+        display:block;
     }
 
 }

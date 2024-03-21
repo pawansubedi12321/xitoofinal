@@ -111,7 +111,7 @@ const AddItems = () => {
       <div className="row">
       <div className="col-md-12 addprob-head">
       <img className="backbutton"onClick={backbutton}src={BackButton} alt="backbutton"/>
-      <h9 className="add-question">ADD ITEM</h9>
+      <h9 className="add-question">Edit Category</h9>
       <div onClick={crossbutton}src={Cross}alt="closebutton"className='closebutton'>
      <ClearIcon className='clearicon'/>
     </div>
@@ -136,7 +136,7 @@ const AddItems = () => {
 </div>
     <input  defaultValue={state[0].name} style={{color: "white"}} type="text"onChange={text}placeholder="Type here.."className='dds-x'/>
     <div className='save-btn'>
-      <button className='save'onClick={()=>mutate({textdata:textdata,image:image})}>Save</button>
+      <button className='save'onClick={()=>mutate({textdata:textdata,image:image})}>Update</button>
     </div>
     </form>
         </div>

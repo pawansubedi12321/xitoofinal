@@ -224,9 +224,12 @@ const Editproblemlist = () => {
               backgroundimage?<img src={state.state.editeddata[0].imagePath} className='img-334'/>:""
             }
             </div>
-            <div className="save-33">
-            <img src={Save} onClick={()=>mutate({name:name,interval:interval,describe:describe,amount:amount})}className="savebtn"alt="savebtn"/>
-            </div>
+            {/* <div className="save-33">
+            <img src={Save} className="savebtn"alt="savebtn"/>
+            </div> */}
+            <div className='save-btn'>
+      <button className='save'onClick={()=>mutate({name:name,interval:interval,describe:describe,amount:amount})}>Update</button>
+    </div>
         </div>
      
         

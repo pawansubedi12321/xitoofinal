@@ -17,6 +17,7 @@ import Navbar from "./navbar/Navbar";
 import { Troubleshoot } from "@mui/icons-material";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
+import Topbar from './Topbar/Topbar.jsx'
 const QuestionPage = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -24,11 +25,14 @@ const QuestionPage = () => {
   const [click, setclick] = useState(false);
   const [iconclicked, seticonclicked] = useState(false);
   const [ind, setind] = useState("");
-  const [show, setshow] = useState(false);
+  // const [show, setshow] = useState(false);
   const [showpage, setshowpage] = useState(false);
   const [downbuttonindex, setdownbuttonindex] = useState("");
   const [buttonindex, setbuttonindex] = useState("");
-
+  const [show, setshow] = useState(false);
+  const[shownotificationicon,setshownotificationicon]=useState(false);
+  const [showicon, setshowicon] = useState(false);
+ 
   console.log("hello");
   console.log(state);
   console.log("end");
@@ -99,47 +103,15 @@ const QuestionPage = () => {
             </div>
             <div className="col-md-9 col-sm-12 secondcolumn">
               <div className="row">
-                <div className="col-md-12 topbar">
-                  <h1 className="statistics-x">Question</h1>
-                  <div class="input-group searchhere">
-                  <div className="search-text">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Searchhere..."
-                      aria-label="Username"
-                      aria-describedby="basic-addon1"
-                      className="textarea-x"
-                      style={{color:"#FFF"}}
-                    />
-                    <img src={SearchIcon}className="search-icon"alt="searchicon"/>
-                    </div>
-                   
-                  </div>
-                  <NotificationsIcon className="notificationicon" />
 
-                  <div className="headingimage">
-                    <img
-                      src={Rectangle2}
-                      onMouseOver={mouseover}
-                      onMouseOut={mousedown}
-                      onClick={show_332}
-                      alt="images"
-                      className="images-x"
-                    />
-                    {click ? (
-                      <img src={Arrow} alt="images" className="images-abc" />
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                </div>
+              <Topbar shownotificationicon={shownotificationicon} setshownotificationicon={setshownotificationicon} setshowicon={setshowicon} show={show} showicon={showicon} setshow={setshow}/>
+                
 
-                <div className="col-md-12 questioncontent">
+                <div className={`${shownotificationicon?"hide":""} col-md-12 questioncontent`}>
                   {show ? (
                     <div className="showitem">
                       <div className="myprofile">My Profile</div>
-
+                      <hr></hr>
                       <div className="signout">Sign Out</div>
                     </div>
                   ) : (
@@ -181,13 +153,13 @@ const QuestionPage = () => {
                               <div className="col-md-12 question-ss">
                               <div className="row">
                               
-                                <div className="col-md-7 questionpage-332">
+                                <div className="col-md-10 questionpage-332">
                                 <p>
                                 {empty ? "none" : item.question}
                                 </p>
                                 </div>
                             
-                              <div className="col-md-5 icon-w2 gx-2">
+                              <div className="col-md-2 icon-w2 gx-2">
                                 <div
                                   onClick={() => clicked(index)}
                                   className={`mx-2 icon-332`}

@@ -13,7 +13,7 @@
     src:url(../fonts/FullSansLCThin.otf);
   }
 .item-xyz{
-    margin-top:10px;
+   
     padding: 16px 28px;
     gap: 12px;
     border-radius:15px;
@@ -23,7 +23,7 @@
     color:white;
     font-weight: 500;
     color: #FFF;
-    font-size: 13px;
+    /* font-size: 13px; */
     font-style: normal;
     line-height: normal;
     text-transform: uppercase;
@@ -104,14 +104,15 @@
   }
  
 .showitem{
-    background-color: #D9D9D9;
+    background-color:#3d0557;
     width:120px;
     height:90px;
     border-radius: 10px;
     position:absolute;
     z-index: 1;
     right:45px;
-    top:100px;
+    top:80px;
+    
   }
  
 .myprofile,.signout{
@@ -119,14 +120,14 @@
     height:50%;
     display:flex;
     justify-content: center;
-    color:#3D0557;
+    color:#FFF;
     align-items: center;
     
   }
   
 
 .myprofile:hover,.signout:hover{
-    background-color: #FFFFFF;
+    background-color:#9747FF;
     border-radius: 10px;
 
   }
@@ -191,29 +192,44 @@
 .img-edit-delete-icon{
     display:none;
 }
-@media screen and (max-width: 431px) {
+@media screen and (max-width:576px) {
+    .images-dds{
+        margin-top:15px !important;
+    }
     .img-443{
         display:flex;
         align-items: center;
         flex-direction: column;
+        padding:10px;
     }
     .img-xxs{
         margin-right:0px !important;
         background-color: green;
     }
     .cateanditem{
-        margin-left:0%;
+        
+        display: flex;
+    margin-left: 0%;
+    justify-content: center;
     }
     .p-2{
         padding:0rem!important;
     }
-    /* .lineargradient{
-        top:170px !important;
-    } */
-    
-    
-    
-    
+    .item-xyz{
+        width:150px;
+        height:40px;
+        padding:unset;
+        /* padding:16px 23px; */
+        font-size: 11px;
+    }
+    .addicon{
+        font-size:21px !important;
+    }
+    .select{
+        font-size: 14px !important;
+    width: 115px;
+    height: 40px !important;
+    }   
 }
 @media screen and (max-width:992px) {
     .img-edit-delete-icon{
@@ -310,7 +326,7 @@
 }
 @media  screen and (max-width:992px) {
     .additem-432{
-        justify-content: center !important;
+        justify-content: end !important;
     }
     .edit-mobile-icon{
         right:10%;
@@ -378,6 +394,9 @@
   }
   .headingimage{
     position:relative;
+    display:flex;
+    justify-content:start;
+    align-items: center;
   }
  
 

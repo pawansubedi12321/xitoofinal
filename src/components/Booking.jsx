@@ -15,10 +15,11 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useQuery } from "react-query";
 import Nav from "react-bootstrap/Nav";
 import EditIcon from "@mui/icons-material/Edit";
+import Topbar from './Topbar/Topbar.jsx'
 const Booking = () => {
   const [click, setclick] = useState(false);
   const [booknow, setbooknow] = useState(false);
-  const [show, setshow] = useState(false);
+  
   const [activeTab, setActiveTab] = useState("nav-all");
   // const[appointlength,setappointlength]=useState('');
 
@@ -37,7 +38,10 @@ const Booking = () => {
   const [onworklength, setonworklength] = useState(0);
   const[onworkdata,setonworkdata]=useState([]);
   const[All,setAll]=useState(0);
-
+  const [show, setshow] = useState(false);
+  const[shownotificationicon,setshownotificationicon]=useState(false);
+  const [showicon, setshowicon] = useState(false);
+  
   // let appointlength=0
   const fetchData = async () => {
     try {
@@ -127,43 +131,13 @@ const Booking = () => {
         </div>
         <div className="col-md-9 col-sm-12 secondcolumn">
           <div className="row">
-            <div className="col-md-12 topbar">
-              <h1 className="statistics-x">Booking</h1>
-              <div class="input-group search">
-              <div className="search-text">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Searchhere..."
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                  className="textarea-x"
-                  style={{color:"#FFF"}}
-                />
-                <img src={SearchIcon}className="search-icon"alt="searchicon"/>
-                </div>
-              </div>
-              <NotificationsIcon className="notificationicon" />
-              <div className="headingimage">
-                <img
-                  src={Rectangle2}
-                  onMouseOver={mouseover}
-                  onClick={show_332}
-                  alt="images"
-                  className="images-x"
-                />
-                {click ? (
-                  <img src={Arrow} alt="images" className="images-abc" />
-                ) : (
-                  ""
-                )}
-              </div>
-            </div>
-            <div className="col-md-12 content">
+          <Topbar shownotificationicon={shownotificationicon} setshownotificationicon={setshownotificationicon} setshowicon={setshowicon} show={show} showicon={showicon} setshow={setshow}/>
+            
+            <div className={`${shownotificationicon?"hide":""} col-md-12 content`}>
               {show ? (
                 <div className="showitem">
                   <div className="myprofile">My Profile</div>
-
+                  <hr></hr>
                   <div className="signout">Sign Out</div>
                 </div>
               ) : (
@@ -189,34 +163,6 @@ const Booking = () => {
                   </button>
 
                   <button
-                    className={`nav-link nav-appoint ${
-                      activeTab === "nav-appoint" ? "active" : ""
-                    }`}
-                    id="nav-appoint-tab"
-                    onClick={() => handleTabClick("nav-appoint")}
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-appoint"
-                    aria-selected={activeTab === "nav-appoint"}
-                  >
-                    Appoint
-                    <div className="mx-2 appoint-nav">{appointlength}</div>
-                  </button>
-                  <button
-                    className={`nav-link nav-completed ${
-                      activeTab === "nav-completed" ? "active" : ""
-                    }`}
-                    id="nav-completed-tab"
-                    onClick={() => handleTabClick("nav-completed")}
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-completed"
-                    aria-selected={activeTab === "nav-completed"}
-                  >
-                    Completed
-                    <div className="mx-2 completed-nav">{completedlength}</div>
-                  </button>
-                  <button
                     className={`nav-link nav-pending ${
                       activeTab === "nav-pending" ? "active" : ""
                     }`}
@@ -231,6 +177,21 @@ const Booking = () => {
                     <div className="mx-2 pending-nav">{pendinglength}</div>
                   </button>
                   <button
+                    className={`nav-link nav-appoint ${
+                      activeTab === "nav-appoint" ? "active" : ""
+                    }`}
+                    id="nav-appoint-tab"
+                    onClick={() => handleTabClick("nav-appoint")}
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-appoint"
+                    aria-selected={activeTab === "nav-appoint"}
+                  >
+                    Appoint
+                    <div className="mx-2 appoint-nav">{appointlength}</div>
+                  </button>
+
+                  <button
                     className={`nav-link nav-onwork ${
                       activeTab === "nav-onwork" ? "active" : ""
                     }`}
@@ -244,6 +205,29 @@ const Booking = () => {
                     Onwork
                     <div className="mx-2 onwork-nav">{onworklength}</div>
                   </button>
+
+                  <button
+                    className={`nav-link nav-completed ${
+                      activeTab === "nav-completed" ? "active" : ""
+                    }`}
+                    id="nav-completed-tab"
+                    onClick={() => handleTabClick("nav-completed")}
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-completed"
+                    aria-selected={activeTab === "nav-completed"}
+                  >
+                    Completed
+                    <div className="mx-2 completed-nav">{completedlength}</div>
+                  </button>
+
+
+                  
+                  
+
+                  
+                 
+                 
                 </div>
               </nav>
 

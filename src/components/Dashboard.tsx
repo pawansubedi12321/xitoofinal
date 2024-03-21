@@ -57,12 +57,7 @@ const Dashboard = () => {
               {/*  */}
 
               <div className="col-md-12 dashboardcontent">
-                {
-                  shownotificationicon?
-                  <div className="shownotification">
-                    <p>Hello world</p>
-                    </div>:""
-                }
+                
 
 
 
@@ -70,6 +65,7 @@ const Dashboard = () => {
                 {show ? (
                   <div className="showitem">
                     <div className="myprofile">My Profile</div>
+                    <hr></hr>
 
                     <div className="signout">Sign Out</div>
                   </div>
@@ -77,7 +73,7 @@ const Dashboard = () => {
                   ""
                 )}
 
-                <div className="content-a">
+                <div className={`${shownotificationicon?"hide":""} content-a`}>
                   <div className="row g-2">
                     <div className="col-md-4">
                       <div className="total-admin-x">

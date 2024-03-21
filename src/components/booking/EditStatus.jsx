@@ -60,7 +60,7 @@ const EditStatus = () => {
 
             <div className='col-md-12 parent-editbutton '>
             
-              <input className="editbooking-button"type='button'value="save"/>
+              <input className="editbooking-button"type='button'value="UPDATE"/>
             
               </div>
             </div>

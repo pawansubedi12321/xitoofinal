@@ -7,7 +7,7 @@
 .textarea-x {
   display: flex;
   height: 44px;
-  width: 20vw;
+  width: 100%;
   align-items: center;
   flex-shrink: 0;
   border-radius: 12px;
@@ -27,7 +27,7 @@ input::placeholder {
 }
 
 .statistics-x {
-  margin-left: 1%;
+ 
   font-family: FullSans;
   color: #fff;
 }
@@ -81,6 +81,26 @@ input::placeholder {
   .userimg-x,.workerimg-x {
     width: 130px !important;
   }
+  .shownotification{
+    
+    /* left:0 !important; */
+    margin-top:100px !important;
+    overflow-y: scroll;
+  }
+  .shownotification{
+    width:100% !important;
+    height:unset !important;
+    left:0 !important;
+    margin-top:100px !important;
+    overflow-y: scroll;
+  }
+  .hide{
+    display:none !important;
+  }
+  .shownotification{
+    z-index: unset !important;
+  }
+ 
 }
 
 .no-of-admin-x,
@@ -140,6 +160,7 @@ input::placeholder {
 }
 .search-text{
   position:relative;
+  width:97%;
 }
 .search-icon{
   position:absolute;
@@ -148,3 +169,102 @@ input::placeholder {
 
 
 }
+.notification-heading{
+  display:inline-flex;
+  font-size: 15px;
+  padding:20px;
+}
+.booking-notification{
+  padding:20px;
+}
+.viewall-button{
+  width:65px;
+  margin-left:10px;
+  border-radius:9px;
+  background-color:#9747FF;
+  border:none;
+  color:#FFF;
+  font-size: 12px;
+  font-weight:bold;
+  line-height: 1px;
+}
+.input-group{
+  /* width:unset; */
+  display:flex;
+  align-items: center;
+}
+hr{
+  margin:unset;
+}
+.notify{
+  display:flex;
+  justify-content: end;
+  align-items: center;
+}
+.top-bar-search-icon{
+  display:none;
+}
+.mobile-search-text,.showsearch{
+  display:none !important;
+}
+/* .showsearch,.mobile-search{
+  display:none !important;
+} */
+@media screen and (max-width:576px) {
+  
+  .search{
+    display:none !important;
+  }
+  .shownotification{
+    width:100% !important;
+    height:unset !important;
+    left:0 !important;
+    margin-top:100px !important;
+    overflow-y: scroll;
+  }
+  .showsearch{
+    display:block;
+  }
+  .topbar-text{
+    display:flex;
+    justify-content: center;
+  }
+  .top{
+    display:flex;
+    justify-content: center;
+  }
+  .top-bar-search-icon{
+    width:50px;
+    display:block;
+  }
+  .mobile-search-text{
+    display:block !important;
+    justify-self: center;
+    margin-top:25px;
+  }
+  .mobile-search{
+  
+    display:flex;
+    justify-content: center;
+    position:relative;
+  }
+ 
+  .mobile-search-icon{
+    position:absolute;
+    left:83px;
+    top:10px;
+  }
+  
+}
+
+.kk{
+  color:#FFF;
+}
+.none{
+  display:none;
+}
+/* .line-bar{
+  width:100%;
+  background-color: #FFF;
+  height:1px;
+} */
