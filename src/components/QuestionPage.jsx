@@ -64,8 +64,8 @@ const QuestionPage = () => {
     // console.log("mouse over");
   };
   const mousedown = () => {
-    setclick(false);
-    // console.log("mouse down");
+    setshownotificationicon(false);
+   
   };
 
   const clicked = (index) => {
@@ -108,15 +108,7 @@ const QuestionPage = () => {
                 
 
                 <div className={`${shownotificationicon?"hide":""} col-md-12 questioncontent`}>
-                  {show ? (
-                    <div className="showitem">
-                      <div className="myprofile">My Profile</div>
-                      <hr></hr>
-                      <div className="signout">Sign Out</div>
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                 
 
                   <div className="question">
                     <img
@@ -165,7 +157,7 @@ const QuestionPage = () => {
                                   className={`mx-2 icon-332`}
                                   key={index}
                                 >
-                                  <a title="edit"><EditIcon/></a>
+                                  <a title="edit"><EditIcon className="editquestion-icon"/></a>
                                 </div>
 
 
@@ -175,7 +167,7 @@ const QuestionPage = () => {
                                   className={`icon-332`}
                                   key={index}
                                 >
-                                  <a title="delete"><ClearIcon/></a>
+                                  <a title="delete"><ClearIcon className="clearquestion-icon"/></a>
                                 </div>
                               </div>
 

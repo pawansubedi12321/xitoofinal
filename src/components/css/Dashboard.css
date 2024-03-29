@@ -16,6 +16,7 @@
   text-align: center;
   
 }
+
 input::placeholder {
   font-family: FullSansThin;
 }
@@ -86,21 +87,22 @@ input::placeholder {
     /* left:0 !important; */
     margin-top:100px !important;
     overflow-y: scroll;
-  }
-  .shownotification{
+    z-index: unset !important;
     width:100% !important;
     height:unset !important;
     left:0 !important;
     margin-top:100px !important;
     overflow-y: scroll;
   }
+
   .hide{
     display:none !important;
   }
-  .shownotification{
-    z-index: unset !important;
+  .textarea-x{
+    margin-right:unset !important;
+    margin-left:unset  !important;
   }
- 
+
 }
 
 .no-of-admin-x,
@@ -225,14 +227,15 @@ hr{
   .showsearch{
     display:block;
   }
-  .topbar-text{
+  /* .topbar-text{
     display:flex;
     justify-content: center;
-  }
+  } */
   .top{
     display:flex;
     justify-content: center;
   }
+  
   .top-bar-search-icon{
     width:50px;
     display:block;

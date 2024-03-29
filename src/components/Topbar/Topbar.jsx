@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useRef,useState,useEffect,useContext } from "react";
 import SearchIcon from "../../assets/SearchIcon.svg";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Rectangle2 from "../../assets/Rectangle2.png";
@@ -7,6 +7,8 @@ import '../css/Booking.css';
 import { UserContext } from '../../App';
 const Topbar = ({setshowicon,showicon,setshow,show,setshownotificationicon,shownotificationicon}) => {
   const[showsearchicon,setshowsearchicon]=useState(false);
+  const[mousedown,setmousedown]=useState(false);
+
   const mouseovericon = () => {
     setshowicon(true);
   };
@@ -18,16 +20,33 @@ const Topbar = ({setshowicon,showicon,setshow,show,setshownotificationicon,shown
     setshownotificationicon(false);
   };
 
-  const notificationicon=()=>{
-    console.log("this is notificationicon");
-    setshownotificationicon(!shownotificationicon);
-    setshow(false);
-  }
+  
   const mobilesearchicon=()=>{
 
     setshowsearchicon(!showsearchicon);
     console.log("Thi is icon",showsearchicon);
   }
+  const notificationicon = () => {
+    setshownotificationicon(!shownotificationicon);
+    console.log("This is notificationicon", shownotificationicon);
+    setshow(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!notificationRef.current.contains(event.target)) {
+        setshownotificationicon(false);
+        setshow(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+  };
+  }, []);
+
+  const notificationRef = useRef(null); // Initialize notificationRef here
   const {clicked,setclicked}=useContext(UserContext);
   return (
     <div>
@@ -51,10 +70,14 @@ const Topbar = ({setshowicon,showicon,setshow,show,setshownotificationicon,shown
             <img src={SearchIcon} className={`search-icon`} alt="searchicon" />
           </div>
         </div>
-        <div className="col-md-4  col-6 notify">
+        <div className="col-md-4  col-6 notify"ref={notificationRef}>
         <div className="notificationicon"onClick={notificationicon}>
             <div className="noticationcount"><p>10</p></div>
         <NotificationsIcon className="notification"  />
+
+
+        
+      
         </div>
 
 
@@ -66,14 +89,26 @@ const Topbar = ({setshowicon,showicon,setshow,show,setshownotificationicon,shown
             onClick={show_332}
             alt="images"
             className="images-x"
+            ref={notificationRef}
           />
           {showicon ? (
             <img src={Arrow} alt="images" className="images-abc" />
           ) : (
             ""
           )}
+          {show ? (
+                  <div className="showitem">
+                    <div className="myprofile">My Profile</div>
+                    <hr></hr>
+
+                    <div className="signout">Sign Out</div>
+                  </div>
+                ) : (
+                  ""
+                )}
         </div>
-      
+
+       
         </div>
 
         {
@@ -98,9 +133,33 @@ const Topbar = ({setshowicon,showicon,setshow,show,setshownotificationicon,shown
                       <p>30 min. ago</p>
                     </div>
                     <hr></hr>
+
+                    <div className="booking-notification">
+                      <h6>Lorem Ipsum</h6>
+                      <p>Quae dolorem earum veritatis oditseno</p>
+                      <p>30 min. ago</p>
+                    </div>
+                    <hr></hr>
+
+                    <div className="booking-notification">
+                      <h6>Lorem Ipsum</h6>
+                      <p>Quae dolorem earum veritatis oditseno</p>
+                      <p>30 min. ago</p>
+                    </div>
+                    <hr></hr>
+
+                    <div className="booking-notification">
+                      <h6>Lorem Ipsum</h6>
+                      <p>Quae dolorem earum veritatis oditseno</p>
+                      <p>30 min. ago</p>
+                    </div>
+                    <hr></hr>
+
                    
                     </div>:""
                 }
+                
+                
         
       </div>
       <div className="row mobile-search-text">

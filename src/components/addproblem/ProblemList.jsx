@@ -45,13 +45,8 @@ const ProblemLIst = () => {
       
     setname(value.name);
     setselectcategory(value.id);
-  
-    
-
-
-
   }
-
+  console.log("this is name",name);
   useEffect(() => {
   
     const fetchData = async () => {
@@ -175,7 +170,11 @@ const ProblemLIst = () => {
 
     navigate('/editproblemlist',{state:{editeddata:editeddata,id:state}});
   }
-
+  const maxLength = 21;
+  let substring = name.substring(0, maxLength);
+  if (name.length > maxLength) {
+    substring += "...";
+  }
   return (
     <div>
       <div className="section-padding section-bg">
@@ -204,9 +203,9 @@ const ProblemLIst = () => {
                   </select>
 
             
-                  <div className="col-md-3 col-7 item_332">
-                    {/* <div className=""> */}
-                    <span className="item_list">{name}</span>
+                  <div className="col-md-3 gx-4 col-7">
+                    <div className="item_332">
+                    <span className="item_list">{substring}</span>
 
                     <div className="closebtn">
                       <CloseIcon
@@ -214,11 +213,11 @@ const ProblemLIst = () => {
                         onClick={closebutton}
                       />
                     </div>
-                    {/* </div> */}
+                    </div>
                   </div>
                  
                   
-                  <div className={`${Data.length > 0 ? "col-md-7 px-2 col-12" : "none"}`}>
+                  <div className={`${Data.length > 0 ? "col-md-7 px-4 col-12" : "none"}`}>
                      <div className="additem-432">
                     <button
                       onClick={addproblempage}
@@ -227,7 +226,7 @@ const ProblemLIst = () => {
                       <span>
                         <AddIcon />
                       </span>
-                      ADD ITEMS
+                      ADD problem
                     </button>
                     </div> 
                   </div>
@@ -237,15 +236,7 @@ const ProblemLIst = () => {
 
                 <h1 className="prob">Problem List</h1>
                 
-                {show ? (
-                  <div className="showitem">
-                    <div className="myprofile">My Profile</div>
-                    <hr></hr>
-                    <div className="signout">Sign Out</div>
-                  </div>
-                ) : (
-                  ""
-                )}
+                 
                 <div className={`${Data.length > 0 ? "none" : "image-xxd"}`}>
                   <img
                     src={EmptyImg}
@@ -284,8 +275,8 @@ const ProblemLIst = () => {
                           <div className="col-md-1 problemimage">
                             <img className="problemimg" src={item.image} />
                           </div>
-                          <div className="col-md-4 hey">
-                            <p>{item.name}</p>
+                          <div className="col-md-4 problem-list">
+                            <p className="problemlist-name">{item.name}</p>
                             <p>{item.shortDescription}</p>
                           </div>
                           <div className="col-md-2 esttime">

@@ -134,15 +134,7 @@ const Booking = () => {
           <Topbar shownotificationicon={shownotificationicon} setshownotificationicon={setshownotificationicon} setshowicon={setshowicon} show={show} showicon={showicon} setshow={setshow}/>
             
             <div className={`${shownotificationicon?"hide":""} col-md-12 content`}>
-              {show ? (
-                <div className="showitem">
-                  <div className="myprofile">My Profile</div>
-                  <hr></hr>
-                  <div className="signout">Sign Out</div>
-                </div>
-              ) : (
-                ""
-              )}
+              
               <h5 className="problemlist">Booking List</h5>
 
               <nav>

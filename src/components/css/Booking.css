@@ -201,6 +201,18 @@ cursor: pointer;
       display:flex;
       justify-content: center;
     }
+    @media screen and (max-width:432px) {
+      .edit-status{
+        width:30px  !important;
+        height:30px  !important;
+        border-radius: unset !important;
+      }
+      .eyeicon{
+        width:30px;
+        height:30px;
+        border-radius: unset;
+      }
+    }
   @media screen and (max-width:992px) {
     /* .images-x{
         display:none;
@@ -224,16 +236,8 @@ cursor: pointer;
     .secondpage{
         height:0vh !important;
     }
-    .textarea-x{
-        width:200px;
-    }
-    .showitem{
-      margin-top:90px;
-        /* display:none; */
-    }
-    /* .notificationicon{
-      display:none !important;
-    } */
+  
+  
    
   }
   .section-padding{
@@ -287,6 +291,7 @@ cursor: pointer;
   .problemlist{
     color:white;
     margin-left:1%;
+    margin-top:10px;
   }
     .verticalline{
         width:2px;
@@ -347,7 +352,7 @@ cursor: pointer;
   display:flex;
   flex-direction:row;
   align-items: center;
-  justify-content: center
+  justify-content: center;
   
   /* display:inline; */
 }
@@ -415,15 +420,19 @@ cursor: pointer;
     width:250px !important;
     height:250px !important;
   }
+ 
 
   
  
 }
-@media screen and (max-width:768px){
-  .mx-2{
+@media screen and (max-width:992px){
+  .showpage-image{
+    margin-top:15px;
+  }
+  /* .mx-2{
     margin-left:unset !important;
     margin-right:unset !important;
-  }
+  } */
 
 }
 @media screen and (max-width:690px) {
@@ -446,6 +455,9 @@ cursor: pointer;
   display:inline-flex;
   color:#FFF;
   font-weight: 600;
+  background-color: #9747FF;
+  margin-top:10px;
+  margin-right:10px;
 }
 .nav-all:hover,.nav-appoint:hover,.nav-completed:hover,.nav-pending:hover,.nav-onwork:hover{
   /* display:inline-flex; */
@@ -551,12 +563,15 @@ cursor: pointer;
   align-items: center;
 }
 .showpage-image{
-  /* width:91px; */
+  
+   width: 100px;
   height:100px;
-  border: 2px solid yellow;
+  
+  margin: 10px 0px;
   /* background-color: red; */
 }
 .shownotification{
+  overflow-y: scroll;
   position:absolute;
   width:300px;
   height:400px;
@@ -569,4 +584,14 @@ cursor: pointer;
     color:#FFF;
     /* padding:20px; */
 }
+.shownotification::-webkit-scrollbar {
+  width: 7px;
+}
+.shownotification::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.50);; 
+  border-radius: 10px;
+}
+ .nav-tabs{
+ padding-bottom:15px;
+  }
 

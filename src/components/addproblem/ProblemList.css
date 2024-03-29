@@ -174,15 +174,16 @@ background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
   .item-ddg {
     margin-top: -5px;
   }
-  .item_332{
+  /* .item_332{
     height:auto;
-  }
+    margin-left:10px;
+  } */
   .icon-32{
     margin-top:10px;
   }
-  .amnt{
+  /* .amnt{
     margin-top:10px;
-  }
+  } */
 }
 @media screen and (max-width: 431px) {
   .addproblem {
@@ -233,9 +234,10 @@ background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
   .problem-xz {
     margin-left: 0px;
   }
-  .item_332{
+  .item_332,.closebtn{
     font-size:13px !important;
-    height:auto !important;
+    height:40px !important;
+    
   }
   .item_list{
     width:120px;
@@ -244,6 +246,9 @@ background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
   
     margin-right:unset!important;
     margin-left:unset!important;
+  }
+  .problemlist-ee3{
+    padding-bottom: 20px;
   }
  
   /* .firstcolumn{
@@ -271,13 +276,13 @@ background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
  
 }
 
-.hey {
+.problem-list {
   color: white;
 
-  /* display: flex;
-  
-  align-items: center; */
  
+}
+.problemlist-name{
+  font-weight: bold;
 }
 .time {
   color: White;
@@ -361,7 +366,7 @@ background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
 }
 
 .problemlist-ee3 {
-  height: 68vh;
+  height: 74vh;
   overflow-y: scroll;
 }
 .problemlist-ee3::-webkit-scrollbar {

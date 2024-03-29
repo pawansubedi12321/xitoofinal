@@ -109,7 +109,7 @@ const AddItems = () => {
       <div className="row">
       <div className="col-md-12 addprob-head">
       <img className="backbutton"onClick={backbutton}src={BackButton} alt="backbutton"/>
-      <h9 className="add-question">ADD ITEM</h9>
+      <h9 className="add-question">ADD CATEGORY</h9>
       <div onClick={crossbutton}src={Cross}alt="closebutton"className='closebutton'>
      <ClearIcon className='clearicon'/>
     </div>

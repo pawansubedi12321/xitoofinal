@@ -85,6 +85,8 @@ const CategoryPage = () => {
     sethideeditanddelete(false);
     seteditdelete(false);
     sethidearrowicon(false);
+    setshownotificationicon(false);
+    
 
   };
   const mouseovericon=()=>{
@@ -175,6 +177,21 @@ const CategoryPage = () => {
   }
   
   console.log("THis is category data",Data)
+  
+  const maxLength =15;
+  const truncatedData = Data.map((item) => {
+    if (item.name.length > maxLength) {
+        return item.name.substring(0, maxLength) + "...";
+    }
+    return item.name;
+});
+
+console.log("this is truncateddata",truncatedData);
+
+  // let substring = Data.substring(1, maxLength);
+  // if(name.length > maxLength) {
+  // //   substring += "...";
+  // // }
   return (
     <div className="section-padding section-bg">
       <div className="row secondpage">
@@ -191,15 +208,7 @@ const CategoryPage = () => {
 
             {/* topadditem */}
             <div className={`${shownotificationicon?"hide":""} col-md-12 content${Data.length > 0 ? " " : ""}`}>
-              {show ? (
-                <div className="showitem">
-                  <div className="myprofile">My Profile</div>
-                  <hr></hr>
-                  <div className="signout">Sign Out</div>
-                </div>
-              ) : (
-                ""
-              )}
+              
 
               <div className="row cateanditem">
                 <select className={`col-6 col-md-2  select`}onChange={(event) => Category({ id: event.target.value, name: event.target.options[event.target.selectedIndex].text })}>
@@ -241,7 +250,7 @@ const CategoryPage = () => {
                       <span>
                         <AddIcon className="addicon" />
                       </span>
-                      ADD ITEMS
+                      ADD CATEGORY
                     </button>
                   </div>
                 )}
@@ -261,13 +270,13 @@ const CategoryPage = () => {
                           <div className="category-img">
                             <img
                               src={Rectangle2}
-                              onMouseLeave={mouseout}
+                              
                               onMouseEnter={() => mouseover(index)}
                               onClick={() => imageclicked(item.id, item.name)}
                               className="img-xxs mx-1 img-fluid"
                             />
 
-                            <span className="lineargradient">{item.name}</span>
+                            <span className="lineargradient">{truncatedData[index]}</span>
 
                             {icon2 === index && click ? (
                               <>

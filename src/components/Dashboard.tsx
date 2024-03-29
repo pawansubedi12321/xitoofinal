@@ -28,7 +28,8 @@ const Dashboard = () => {
     console.log("mouse over");
   };
   const mousedown = () => {
-    setclick(false);
+    // setclick(false);
+    setshownotificationicon(false);
     console.log("mouse down");
   };
   const show_332 = () => {
@@ -44,7 +45,7 @@ const Dashboard = () => {
   console.log("this is notification",shownotificationicon);
   return (
     <div>
-      <div className="section-padding section-bg" onMouseOut={mousedown}>
+      <div className="section-padding section-bg">
         {/* <div className="container-fluid"> */}
         <div className="row secondpage">
           <div className="col-md-2  firstcolumn">
@@ -62,16 +63,6 @@ const Dashboard = () => {
 
 
 
-                {show ? (
-                  <div className="showitem">
-                    <div className="myprofile">My Profile</div>
-                    <hr></hr>
-
-                    <div className="signout">Sign Out</div>
-                  </div>
-                ) : (
-                  ""
-                )}
 
                 <div className={`${shownotificationicon?"hide":""} content-a`}>
                   <div className="row g-2">
