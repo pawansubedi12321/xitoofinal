@@ -43,6 +43,15 @@ const Dashboard = () => {
 
   }
   console.log("this is notification",shownotificationicon);
+  const user=()=>{
+    navigate('/totaluser');
+  }
+  const admin=()=>{
+    navigate('/totaladmin');
+  }
+  const worker=()=>{
+    navigate('/totalworker');
+  }
   return (
     <div>
       <div className="section-padding section-bg">
@@ -66,7 +75,7 @@ const Dashboard = () => {
 
                 <div className={`${shownotificationicon?"hide":""} content-a`}>
                   <div className="row g-2">
-                    <div className="col-md-4">
+                    <div className="col-md-4"onClick={admin}>
                       <div className="total-admin-x">
                         <p className="total-x">
                           <span className="spantotal-x">Total</span>
@@ -83,7 +92,7 @@ const Dashboard = () => {
             </div>
                       </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4"onClick={user}>
                       <div className="total-users-x">
                       <p className='total-x'><span className='spantotal-x'>Total</span></p>
                       <p className=''><span className='user-x'>Users</span></p>
@@ -95,7 +104,7 @@ const Dashboard = () => {
                       </div>
                     </div>
 
-                    <div className="col-md-4">
+                    <div className="col-md-4"onClick={worker}>
                       <div className="total-worker-x">
                       <p className='total-x'><span className='spantotal-x'>Total</span></p>
                       <p className=''><span className='spanworkers-x'>Workers</span></p>

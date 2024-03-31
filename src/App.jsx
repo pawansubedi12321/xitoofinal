@@ -12,10 +12,8 @@ import {
 const queryClient = new QueryClient()
 export const UserContext = createContext();
 function App() {
-  const[clicked,setclicked]=useState("dash");
+  const[clicked,setclicked]=useState("");
   const[name,setname]=useState("");//this name is set on category page.jsx
-  
- 
   return (
     <>
     <UserContext.Provider value={{clicked,setclicked,name,setname}}>

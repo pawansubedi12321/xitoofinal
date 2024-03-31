@@ -263,7 +263,7 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap; */
-    height:74.5vh;
+    height:78.5vh;
     overflow-y: scroll;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(187px, 1fr));

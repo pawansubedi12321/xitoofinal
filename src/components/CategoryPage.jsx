@@ -212,7 +212,7 @@ console.log("this is truncateddata",truncatedData);
 
               <div className="row cateanditem">
                 <select className={`col-6 col-md-2  select`}onChange={(event) => Category({ id: event.target.value, name: event.target.options[event.target.selectedIndex].text })}>
-                  <option>Category</option>
+                  <option>Services</option>
 
                   {Data === null
                     ? ""
@@ -250,7 +250,7 @@ console.log("this is truncateddata",truncatedData);
                       <span>
                         <AddIcon className="addicon" />
                       </span>
-                      ADD CATEGORY
+                      ADD Services
                     </button>
                   </div>
                 )}

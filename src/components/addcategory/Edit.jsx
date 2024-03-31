@@ -111,7 +111,7 @@ const AddItems = () => {
       <div className="row">
       <div className="col-md-12 addprob-head">
       <img className="backbutton"onClick={backbutton}src={BackButton} alt="backbutton"/>
-      <h9 className="add-question">Edit Category</h9>
+      <h9 className="add-question">Edit Services</h9>
       <div onClick={crossbutton}src={Cross}alt="closebutton"className='closebutton'>
      <ClearIcon className='clearicon'/>
     </div>
@@ -131,7 +131,7 @@ const AddItems = () => {
         </div>
 
       <div className='xxd'>
-    <p className='ddf'>Provide category title.</p>
+    <p className='ddf'>Provide Service title.</p>
 
 </div>
     <input  defaultValue={state[0].name} style={{color: "white"}} type="text"onChange={text}placeholder="Type here.."className='dds-x'/>

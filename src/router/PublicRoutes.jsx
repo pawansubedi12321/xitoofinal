@@ -42,6 +42,9 @@ import EditStatus from "../components/booking/EditStatus";
 import Editproblemlist from "../components/addproblem/Editproblemlist";
 import EditQuestion from "../components/addquestion/EditQuestion";
 import FramerMotion from "../components/FramerMotion";
+import TotalUser from "../components/dashboard/TotalUser";
+import TotalAdmin from "../components/dashboard/TotalAdmin";
+import TotalWorker from "../components/dashboard/TotalWorker";
 // import  ProblemList'../components/addproblem/ProblemList';
 const PublicRoutes = () => {
     
@@ -65,6 +68,9 @@ const PublicRoutes = () => {
             <Route path='/editproblemlist'element={<Editproblemlist/>}></Route>
             <Route path='/editquestion'element={<EditQuestion/>}></Route>
             <Route path='/framermotion'element={<FramerMotion/>}></Route>
+            <Route path='/totaluser'element={<TotalUser/>}></Route>
+            <Route path='/totaladmin'element={<TotalAdmin/>}></Route>
+            <Route path='/totalworker'element={<TotalWorker/>}></Route>
         </Routes>
         </BrowserRouter>
     </div>

@@ -366,7 +366,7 @@ background: url(<path-to-image>), lightgray 50% / cover no-repeat, #D9D9D9;
 }
 
 .problemlist-ee3 {
-  height: 74vh;
+  height: 72.5vh;
   overflow-y: scroll;
 }
 .problemlist-ee3::-webkit-scrollbar {

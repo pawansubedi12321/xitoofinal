@@ -14,9 +14,9 @@ const Navbar = () => {
      
    
     const navigate = useNavigate();
-    useEffect(()=>{
-      clicked==='dash'?navigate('/dashboard'):""
-    },[clicked])
+    // useEffect(()=>{
+    //   clicked==='dash'?navigate('/dashboard'):""
+    // },[clicked])
     const category=(btn)=>{
         setclicked(btn);
         navigate("/CategoryPage");
@@ -73,7 +73,7 @@ const Navbar = () => {
 
             <>
             <div className={`${clicked ==='cate'?'color-321':""}`}></div>
-                      <span className="categorypage">Category</span>
+                      <span className="categorypage">Services</span>
                      
                   
                       

@@ -52,7 +52,7 @@ const Topbar = ({setshowicon,showicon,setshow,show,setshownotificationicon,shown
     <div>
       <div className="row top">
       <div className="col-md-4 topbar">
-        <h1 className="statistics-x mx-3">{clicked==='dash'?"Statistics":clicked==='cate'?"Category":clicked==='que'?"Question":clicked==='book'?"Booking":"Problemlist"}</h1>
+        <h1 className="statistics-x mx-3">{clicked==='dash'?"Statistics":clicked==='cate'?"Services":clicked==='que'?"Question":clicked==='book'?"Booking":"Problemlist"}</h1>
         </div>
 
         <img src={SearchIcon} onClick={mobilesearchicon} className="top-bar-search-icon" alt="searchicon" />
