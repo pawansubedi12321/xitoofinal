@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-const url='http://192.168.1.74:9000';
+const url='http://68.183.85.139:9000';
 
 // office ip port :- 192.168.1.74
 // my home ip port :-  172.25.0.1

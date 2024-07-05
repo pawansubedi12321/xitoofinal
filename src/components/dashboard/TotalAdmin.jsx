@@ -7,7 +7,8 @@ const TotalAdmin = () => {
   const [showicon, setshowicon] = useState(false);
   return (
     <div>
-{/*         hello world */}
+
+{/* Admin panel */}
         <div className="section-padding section-bg">
         <div className="row secondpage">
         <div className="col-md-2  firstcolumn">
