@@ -17,3 +17,4 @@ export const addproblem=()=>`${url}/api/v1/problems/create`;
 export const getbooking=()=>`${url}/api/v1/booking/get-all/`;
 export const deletecategory=()=>`${url}/api/v1/category/`;
 export const deleteproblemlist=()=>`${url}/api/v1/problems/`;
+export const Getassistancelist=()=>`${url}/api/v1/assistance/my?page=1&pageSize=50`

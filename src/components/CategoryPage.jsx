@@ -269,7 +269,7 @@ console.log("this is truncateddata",truncatedData);
                         <>
                           <div className="category-img">
                             <img
-                              src={Rectangle2}
+                              src={item.imagePath}
                               
                               onMouseEnter={() => mouseover(index)}
                               onClick={() => imageclicked(item.id, item.name)}

@@ -47,7 +47,7 @@
     align-items: center;
     font-size: 16px;
 }
-.onwork{
+.ongoing{
     width:100%;
     border-radius: 10px;
     background-color:green ;
@@ -473,7 +473,7 @@ cursor: pointer;
   position:relative;
 
 }
-.assistantname::before{
+/* .assistantname::before{
   
   position:absolute;
   content:"";
@@ -486,7 +486,7 @@ cursor: pointer;
 .assistantname::after{
   margin-bottom:100px;
 
-}
+} */
 .booking-status{
   margin-top:15px;
   margin-right:15px;

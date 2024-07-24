@@ -9,7 +9,7 @@ import EmptyBooking from "../assets/EmptyBooking.png";
 import "./css/Booking.css";
 import Navbar from "./navbar/Navbar";
 import axios from "axios";
-import { getbooking, token } from "./api/API.jsx";
+import { getbooking, token ,Getassistancelist} from "./api/API.jsx";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useQuery } from "react-query";
@@ -61,6 +61,25 @@ const Booking = () => {
       setData(fetchedData);
     });
   }, []);
+  const [Assistant,setAssistance]=useState()
+  useEffect(()=>{
+    const fetchassistance=async()=>{
+      try{
+        const response=await axios.get(Getassistancelist(),{
+          headers:{
+            Authorization:`Bearer ${token}`,
+          }
+        })
+          setAssistance(response.data.data)
+      }
+      catch(error){
+        alert(error)
+      }
+    }
+    fetchassistance()
+  },[])
+
+  // console.log("thsiis  is assistant",Assistant.assistance);
   useEffect(() => {
     // console.log("this is all",Data.length);
     try{
@@ -78,7 +97,7 @@ const Booking = () => {
     setpendinglength(pendingData.length);
     setpendingdata(pendingData);
     console.log("this is pending", pendingData);
-    const onworkData = Data.filter((item) => item.status === "onwork");
+    const onworkData = Data.filter((item) => item.status === "ongoing");
     setonworklength(onworkData.length);
     setonworkdata(onworkData);
     console.log("this is onwork", onworkData);
@@ -122,7 +141,16 @@ const Booking = () => {
     console.log("this is item",editeddata);
     navigate('/editstatus',{state:editeddata});
   }
-  
+  // console.log("this is appoint data",JSON.parse(appointdata[0].bookedProblem).categoryName);
+  const assignworker=(name)=>{
+    console.log("this is name",name)
+    const x=Assistant.assistance.filter((item)=>{item.category.name=name})
+    console.log("this is assistantcategory",x);
+    // Assistant.assistance.filter((item, index) => (
+    //   <option>{item.user.name}</option>
+
+  }
+  // console.log("thsiis  is assistant",Assistant.assistance);
   return (
     <div className="section-padding section-bg" onMouseOut={mousedown}>
       <div className="row secondpage">
@@ -153,21 +181,6 @@ const Booking = () => {
                     All
                     <div className="mx-2 all-nav">{All}</div>
                   </button>
-
-                  <button
-                    className={`nav-link nav-pending ${
-                      activeTab === "nav-pending" ? "active" : ""
-                    }`}
-                    id="nav-pending-tab"
-                    onClick={() => handleTabClick("nav-pending")}
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-pending"
-                    aria-selected={activeTab === "nav-pending"}
-                  >
-                    Pending
-                    <div className="mx-2 pending-nav">{pendinglength}</div>
-                  </button>
                   <button
                     className={`nav-link nav-appoint ${
                       activeTab === "nav-appoint" ? "active" : ""
@@ -182,6 +195,21 @@ const Booking = () => {
                     Appoint
                     <div className="mx-2 appoint-nav">{appointlength}</div>
                   </button>
+                  <button
+                    className={`nav-link nav-pending ${
+                      activeTab === "nav-pending" ? "active" : ""
+                    }`}
+                    id="nav-pending-tab"
+                    onClick={() => handleTabClick("nav-pending")}
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-pending"
+                    aria-selected={activeTab === "nav-pending"}
+                  >
+                    Pending
+                    <div className="mx-2 pending-nav">{pendinglength}</div>
+                  </button>
+                  
 
                   <button
                     className={`nav-link nav-onwork ${
@@ -266,7 +294,7 @@ const Booking = () => {
                           <div className="col-md-4 details">
                             <div className="fulldetail">
                               FullName
-                              <div className="laptop">laptop</div>
+                              <div className="laptop">{JSON.parse(item.bookedProblem).categoryName}</div>
                               <div className="orderdateandtime">
                                 Order Date:
                                 {item.bookedDate}|
@@ -278,8 +306,8 @@ const Booking = () => {
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
-                            <h6>Assistant Full Name</h6>
-                            <h6>9800000000</h6>
+                            {/* <h6>Assistant Full Name</h6>
+                            <h6>9800000000</h6> */}
 
                           </div>
 
@@ -291,7 +319,7 @@ const Booking = () => {
                                     ? "appoint"
                                     : item.status === "pending"
                                     ? "pending"
-                                    : item.status === "onwork"
+                                    : item.status === "ongoing"
                                     ? "onwork"
                                     : item.status === "completed"
                                     ? "completed"
@@ -357,7 +385,7 @@ const Booking = () => {
                           <div className="col-md-4 details">
                             <div className="fulldetail">
                               FullName
-                              <div className="laptop">laptop</div>
+                              <div className="laptop">{JSON.parse(item.bookedProblem).categoryName}</div>
                               <div className="orderdateandtime">
                                 Order Date:
                                 {item.bookedDate}|
@@ -365,12 +393,12 @@ const Booking = () => {
                                   {item.timePeriod}
                                 </span>
                               </div>
-                              <div className="location">Location:panauti</div>
+                              <div className="location">Location:{item.location}</div>
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
-                            <h6>Assistant Full Name</h6>
-                            <h6>9800000000</h6>
+                            {/* <h6>Assistant Full Name</h6>
+                            <h6>9800000000</h6> */}
 
                           </div>
                         
@@ -387,11 +415,40 @@ const Booking = () => {
                                     : item.status === "completed"
                                     ? "completed"
                                     : ""
-                                }`}
-                              >
+                                }`}data-bs-toggle="modal"onClick={()=>assignworker(JSON.parse(item.bookedProblem).categoryName)} data-bs-target="#staticBackdrop">
                                 <span>Status :  {item.status.toUpperCase()}</span>
                               </div>
                             </div>
+
+
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <select className="form-select" aria-label="Default select example">
+                        <option selected >Assign To</option>
+                       {/* {JSON.parse(item.bookedProblem).categoryName}
+                        {
+                          Assistant.assistance.filter((item, index) => (
+                            <option>{item.user.name}</option>
+                
+                          ))
+                        } */}
+                        
+                      </select> 
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
 
                             <div className="edit-status"onClick={()=>editstatus(item.id)}>
                               <EditIcon/>
@@ -631,8 +688,8 @@ const Booking = () => {
                                     ? "appoint"
                                     : item.status === "pending"
                                     ? "pending"
-                                    : item.status === "onwork"
-                                    ? "onwork"
+                                    : item.status === "ongoing"
+                                    ? "ongoing"
                                     : item.status === "completed"
                                     ? "completed"
                                     : ""
