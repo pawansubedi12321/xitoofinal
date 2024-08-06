@@ -16,6 +16,7 @@ import { useQuery } from "react-query";
 import Nav from "react-bootstrap/Nav";
 import EditIcon from "@mui/icons-material/Edit";
 import Topbar from './Topbar/Topbar.jsx'
+
 const Booking = () => {
   const [click, setclick] = useState(false);
   const [booknow, setbooknow] = useState(false);
@@ -61,23 +62,7 @@ const Booking = () => {
       setData(fetchedData);
     });
   }, []);
-  const [Assistant,setAssistance]=useState()
-  useEffect(()=>{
-    const fetchassistance=async()=>{
-      try{
-        const response=await axios.get(Getassistancelist(),{
-          headers:{
-            Authorization:`Bearer ${token}`,
-          }
-        })
-          setAssistance(response.data.data)
-      }
-      catch(error){
-        alert(error)
-      }
-    }
-    fetchassistance()
-  },[])
+  
 
   // console.log("thsiis  is assistant",Assistant.assistance);
   useEffect(() => {
@@ -306,11 +291,7 @@ const Booking = () => {
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
-                            {/* <h6>Assistant Full Name</h6>
-                            <h6>9800000000</h6> */}
-
                           </div>
-
                           <div className="col-md-4 statusandeye ">
                             <div className=" status">
                               <div
@@ -431,13 +412,7 @@ const Booking = () => {
       <div class="modal-body">
       <select className="form-select" aria-label="Default select example">
                         <option selected >Assign To</option>
-                       {/* {JSON.parse(item.bookedProblem).categoryName}
-                        {
-                          Assistant.assistance.filter((item, index) => (
-                            <option>{item.user.name}</option>
-                
-                          ))
-                        } */}
+
                         
                       </select> 
       
@@ -457,7 +432,7 @@ const Booking = () => {
 
                             <div className="eye-icon">
                             <div className="verticalline"></div>
-                            <div className="eyeicon" onClick={showdata}>
+                            <div className="eyeicon" onClick={()=>showdata(item.id)}>
                               <RemoveRedEyeIcon />
                             </div>
                           </div>
@@ -540,7 +515,7 @@ const Booking = () => {
 
                              <div className="eye-icon">
                             <div className="verticalline"></div>
-                            <div className="eyeicon" onClick={showdata}>
+                            <div className="eyeicon" onClick={()=>showdata(item.id)}>
                               <RemoveRedEyeIcon />
                             </div>
                           </div>
@@ -623,7 +598,7 @@ const Booking = () => {
 
                             <div className="eye-icon">
                             <div className="verticalline"></div>
-                            <div className="eyeicon" onClick={showdata}>
+                            <div className="eyeicon" onClick={()=>showdata(item.id)}>
                               <RemoveRedEyeIcon />
                             </div>
                           </div>
@@ -705,7 +680,7 @@ const Booking = () => {
 
                             <div className="eye-icon">
                             <div className="verticalline"></div>
-                            <div className="eyeicon" onClick={showdata}>
+                            <div className="eyeicon" onClick={()=>showdata(item.id)}>
                               <RemoveRedEyeIcon />
                             </div>
                           </div>
