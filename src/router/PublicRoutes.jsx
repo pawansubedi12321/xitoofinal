@@ -64,7 +64,7 @@ const PublicRoutes = () => {
             <Route path='/showpage'element={<ShowPage/>}></Route>
             <Route path='/edit/'element={<Edit/>}></Route>
             <Route path="/trialpage"element={<Trialpage/>}></Route>
-            <Route path='editstatus'element={<EditStatus/>}></Route>
+            <Route path='editstatus/:id/:activeTab'element={<EditStatus/>}></Route>
             <Route path='/editproblemlist'element={<Editproblemlist/>}></Route>
             <Route path='/editquestion'element={<EditQuestion/>}></Route>
             <Route path='/framermotion'element={<FramerMotion/>}></Route>

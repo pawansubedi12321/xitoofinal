@@ -1,24 +1,62 @@
 import React,{useState,useEffect}from 'react'
 import Loginpage from '../LoginPage';
 import BackButton from './assets/BackButton.png';
-import {useNavigate ,useLocation, json} from "react-router-dom";
+import {useNavigate ,useLocation, json,useParams} from "react-router-dom";
  import Cross from './assets/Close.svg';
  import ClearIcon from '@mui/icons-material/Clear';
- import { Getassistancelist,token,Updatebooking} from '../api/API';
+ import { Getassistancelist,token,Updatebooking,getbooking} from '../api/API';
  import axios from 'axios';
 import { ConstructionOutlined } from '@mui/icons-material';
 const EditStatus = () => {
     const navigate = useNavigate();
-    const {state}=useLocation();
+    const[Data,setData]=useState([]);
+    const{id,activeTab}=useParams();
+    
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(getbooking(), {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        console.log('Response:', response.data);
+        setData(response.data.data); // Assuming the data is in response.data.data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+    console.log("data",Data);
+    console.log("this is item",id);
+    const state=Data.filter((data)=>data.id==id)
     console.log("this is state",state)
-    console.log("state",JSON.parse(state[0].bookedProblem).categoryName)
-    // console.log("this is state",state[0].status.toUpperCase());
+    //const status = state[0].status;
+    // let hash = '';
+    // console.log("this is status",status);
+    // switch (status) {
+    //   case 'pending':
+    //     hash = '#pending';
+    //     break;
+    //   case 'ongoing':
+    //     hash = '#ongoing';
+    //     break;
+    //   case 'appoint':
+    //     hash = '#appoint';
+    //     break;
+    //   case 'completed':
+    //     hash = '#completed';
+    //     break;
+    //   default:
+    //     hash = '#all';
+    //     break;
+    // }
     const backbutton=()=>{
-      // {state:showdata}
-        // if(state[0].status==='pending'){
-        //   navigate('/booking',{state:'nav-pending'})
-        // }
-        navigate('/booking',{state:"not"});
+        // console.log("this is state",activeTab);
+        navigate(`/booking`,{state:activeTab});
     }
     const crossbutton=()=>{
         navigate('/booking');
@@ -34,11 +72,9 @@ const EditStatus = () => {
         })
         const filter=response.data.data.assistance.filter((item,index)=>{return item.active===true && item.approved===true && item.category.name===JSON.parse(state[0].bookedProblem).categoryName})
         setAssistance(filter)
-        // console.log("this is assistance",Assistant)
-  // console.log("assistance",Assistant[0].user.name)
       }
       catch(error){
-        alert(error)
+      console.log(error)
       }
     }
     fetchassistance()
@@ -77,9 +113,9 @@ const EditStatus = () => {
           method: "PATCH",
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json", // Added Content-Type header
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(data), // Added body
+          body: JSON.stringify(data),
         });
         if (!response.ok) {
           throw new Error("Network response was not ok.");
@@ -111,8 +147,7 @@ const EditStatus = () => {
         <div className="row">
         <div className="col-md-12 addprob-head">
           <div className='col-md-4'>
-          <img className="backbutton"onClick={backbutton}src={BackButton} alt="backbutton"/> 
-
+          <img className="backbutton"href="#pending"onClick={backbutton}src={BackButton} alt="backbutton"/>
           </div>
         
         <div className='col-md-4 parent-add-question'>
@@ -132,7 +167,7 @@ const EditStatus = () => {
             <div className='row edit-status-page'>
             <div className='col-md-12 editbooking-status'>
               <label className='booking-status'>Status:</label>
-              {/* value={state[0].status.toUpperCase()} */}
+
               <select onChange={selectstatus}  className='select-booking'>
                 <option selected>Select Booking Level</option>
                 <option value="appoint">Appoint</option>

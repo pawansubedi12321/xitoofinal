@@ -14,6 +14,7 @@ const ShowPage = () => {
     const[Data,setData]=useState([]);
     const {state}=useLocation();
     console.log('this is state',state);
+    // console.log("state",state.bookedProblem);
       const backbutton=()=>{
         navigate('/booking');
         
@@ -34,8 +35,7 @@ const ShowPage = () => {
       <div className="row"> 
       <div className="col-md-12 addprob-head">
       <div className='col-md-4'>
-          <img className="backbutton"onClick={backbutton}src={BackButton} alt="backbutton"/> 
-
+          <img className="backbutton"href="#pending"onClick={backbutton}src={BackButton} alt="backbutton"/> 
           </div>
           <div className='col-md-4 parent-add-question'>
         <h9 className="add-question">Show Booking</h9>

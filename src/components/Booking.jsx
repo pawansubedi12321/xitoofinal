@@ -23,9 +23,7 @@ const Booking = () => {
   const [click, setclick] = useState(false);
   const [booknow, setbooknow] = useState(false);
   
-  const [activeTab, setActiveTab] = useState("nav-all");
-  // const[appointlength,setappointlength]=useState('');
-
+  const [activeTab, setActiveTab] = useState(`${state===null?"nav-all":state}`);
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
@@ -34,20 +32,15 @@ const Booking = () => {
 
   const navigate = useNavigate();
   const [Data, setData] = useState([]);
-  const [appointlength, setAppointLength] = useState(0);
-  const[appointdata,setappointdata]=useState([]);
-  const [completedlength, setcompletedlength] = useState(0);
-  const[completeddata,setcompleteddata]=useState([]);
+  
   const [pendinglength, setpendinglength] = useState(0);
-  const[pendingdata,setpendingdata]=useState([]);
   const [onworklength, setonworklength] = useState(0);
-  const[onworkdata,setonworkdata]=useState([]);
   const[All,setAll]=useState(0);
+  const [appointlength, setAppointLength] = useState(0);
+  const [completedlength, setcompletedlength] = useState(0);
   const [show, setshow] = useState(false);
   const[shownotificationicon,setshownotificationicon]=useState(false);
   const [showicon, setshowicon] = useState(false);
-  
-  // let appointlength=0
   const fetchData = async () => {
     try {
       const response = await axios.get(getbooking(), {
@@ -85,7 +78,7 @@ const Booking = () => {
     };
     pendingcategory();
   }, []);
-  console.log("this is pending data",Pendingdata)
+ 
   const[Onworkdata,setOnworkdata]=useState()
   useEffect(() => {
     const onworkcategory = async () => {
@@ -146,34 +139,24 @@ const Booking = () => {
 
 
   
-
-  // console.log("thsiis  is assistant",Assistant.assistance);
-  useEffect(() => {
-    // console.log("this is all",Data.length);
-    try{
-    setAll(Data.length);
-    const ApointData = Data.filter((item) => item.status === "appoint");
-    console.log("this is apointdata", ApointData);
-
-    setappointdata(ApointData);
-    setAppointLength(ApointData.length);
-    const completedData = Data.filter((item) => item.status === "completed");
-    console.log("This is compelted data", completedData);
-    setcompleteddata(completedData);
-    setcompletedlength(completedData.length);
-    const pendingData = Data.filter((item) => item.status === "pending");
-    setpendinglength(pendingData.length);
-    setpendingdata(pendingData);
-    console.log("this is pending", pendingData);
-    const onworkData = Data.filter((item) => item.status === "ongoing");
-    setonworklength(onworkData.length);
-    setonworkdata(onworkData);
-    console.log("this is onwork", onworkData);
-    }catch(e){
-      console.log(e);
+  useEffect(()=>{
+      setAll(Data.length);
+    if (Appointdata!==undefined) {
+      setAppointLength(Appointdata.fetchbooking.length);
     }
-  },[Data]);
 
+    if (Completeddata!==undefined) {
+      setcompletedlength(Completeddata.fetchbooking.length);
+    }
+
+    if (Onworkdata!==undefined) {
+      setonworklength(Onworkdata.fetchbooking.length);
+    }
+
+    if (Pendingdata!==undefined) {
+      setpendinglength(Pendingdata.fetchbooking.length);
+    }
+  },[Data,Appointdata,Completeddata,Onworkdata,Pendingdata])
   const { isLoading, error, data } = useQuery("bookingData", fetchData); // Provide a unique key for the query
   if (isLoading) return "Loading...";
   if (error) return "An error has occur";
@@ -183,41 +166,26 @@ const Booking = () => {
   const mousedown = () => {
     setclick(false);
   };
-  const mouseover = () => {
-    setclick(true);
-  };
-
   const book = () => {
     setbooknow(true);
   };
-  const show_332 = () => {
-    setshow(!show);
-  };
-
   const showdata = (item) => {
     console.log("this is id",item);
-    // navigate("/showpage");
     const showdata=Data.filter((data)=>data.id===item);
-    // console.log("this is data",showdata);
     navigate('/showpage',{state:showdata});
 
   };
 
   const editstatus=(item)=>{
-    const editeddata=Data.filter((data)=>data.id==item)
-    console.log("this is item",editeddata);
-    navigate(`/editstatus/`,{state:editeddata});
+    console.log("this is activetab",activeTab);
+    
+    navigate(`/editstatus/${item}/${activeTab}`);
   }
-  // console.log("this is appoint data",JSON.parse(appointdata[0].bookedProblem).categoryName);
   const assignworker=(name)=>{
     console.log("this is name",name)
     const x=Assistant.assistance.filter((item)=>{item.category.name=name})
     console.log("this is assistantcategory",x);
-    // Assistant.assistance.filter((item, index) => (
-    //   <option>{item.user.name}</option>
-
   }
-  // console.log("thsiis  is assistant",Assistant.assistance);
   return (
     <div className="section-padding section-bg" onMouseOut={mousedown}>
       <div className="row secondpage">
@@ -369,6 +337,8 @@ const Booking = () => {
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
+                          <h6>{item.assignTo===undefined?"":JSON.parse(item.assignTo).name}</h6>
+                          <h6>{item.assignTo===undefined?"":JSON.parse(item.assignTo).phone}</h6>
                           </div>
                           <div className="col-md-4 statusandeye ">
                             <div className=" status">
@@ -453,8 +423,8 @@ const Booking = () => {
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
-                            {/* <h6>Assistant Full Name</h6>
-                            <h6>9800000000</h6> */}
+                          <h6>{item.assignTo===undefined?"":item.assignTo.name}</h6>
+                          <h6>{item.assignTo===undefined?"":item.assignTo.phone}</h6>
 
                           </div>
                         
@@ -560,8 +530,8 @@ const Booking = () => {
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
-                            <h6>Assistant Full Name</h6>
-                            <h6>9800000000</h6>
+                          <h6>{item.assignTo===undefined?"":item.assignTo.name}</h6>
+                          <h6>{item.assignTo===undefined?"":item.assignTo.phone}</h6>
 
                           </div>
                           <div className="col-md-4 statusandeye ">
@@ -643,9 +613,8 @@ const Booking = () => {
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
-                            <h6>Assistant Full Name</h6>
-                            <h6>9800000000</h6>
-
+                            <h6>{item.assignTo===undefined?"":item.assignTo.name}</h6>
+                            <h6>{item.assignTo===undefined?"":item.assignTo.phone}</h6>
                           </div>
                           <div className="col-md-4 statusandeye ">
                             <div className="status">
@@ -724,8 +693,8 @@ const Booking = () => {
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
-                            <h6>Assistant Full Name</h6>
-                            <h6>9800000000</h6>
+                          <h6>{item.assignTo===undefined?"":item.assignTo.name}</h6>
+                          <h6>{item.assignTo===undefined?"":item.assignTo.phone}</h6>
 
                           </div>
                           <div className="col-md-4 statusandeye ">
