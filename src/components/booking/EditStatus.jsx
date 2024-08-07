@@ -14,8 +14,11 @@ const EditStatus = () => {
     console.log("state",JSON.parse(state[0].bookedProblem).categoryName)
     // console.log("this is state",state[0].status.toUpperCase());
     const backbutton=()=>{
-        navigate('/booking');
-        
+      // {state:showdata}
+        // if(state[0].status==='pending'){
+        //   navigate('/booking',{state:'nav-pending'})
+        // }
+        navigate('/booking',{state:"not"});
     }
     const crossbutton=()=>{
         navigate('/booking');

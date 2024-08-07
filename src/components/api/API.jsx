@@ -19,3 +19,7 @@ export const deletecategory=()=>`${url}/api/v1/category/`;
 export const deleteproblemlist=()=>`${url}/api/v1/problems/`;
 export const Getassistancelist=()=>`${url}/api/v1/assistance/my?page=1&pageSize=50`;
 export const Updatebooking=()=>`${url}/api/v1/booking/`;
+export const PendingBooking=()=>`${url}/api/v1/booking/assistance/filter?status=pending&page=1&pageSize=10`
+export const OnworkBooking=()=>`${url}/api/v1/booking/assistance/filter?status=ongoing&page=1&pageSize=10`
+export const AppointBooking=()=>`${url}/api/v1/booking/assistance/filter?status=appoint&page=1&pageSize=10`
+export const CompletedBooking=()=>`${url}/api/v1/booking/assistance/filter?status=completed&page=1&pageSize=10`

@@ -9,7 +9,7 @@ import EmptyBooking from "../assets/EmptyBooking.png";
 import "./css/Booking.css";
 import Navbar from "./navbar/Navbar";
 import axios from "axios";
-import { getbooking, token ,Getassistancelist} from "./api/API.jsx";
+import { getbooking, token ,Getassistancelist,PendingBooking,OnworkBooking,AppointBooking,CompletedBooking} from "./api/API.jsx";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useQuery } from "react-query";
@@ -18,6 +18,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import Topbar from './Topbar/Topbar.jsx'
 
 const Booking = () => {
+  const {state}=useLocation();
+  console.log("this is state",state);
   const [click, setclick] = useState(false);
   const [booknow, setbooknow] = useState(false);
   
@@ -27,6 +29,8 @@ const Booking = () => {
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
+  
+  
 
   const navigate = useNavigate();
   const [Data, setData] = useState([]);
@@ -62,6 +66,85 @@ const Booking = () => {
       setData(fetchedData);
     });
   }, []);
+
+  const[Pendingdata,setPendingdata]=useState()
+  useEffect(() => {
+    const pendingcategory = async () => {
+      try {
+        const response = await axios.get(PendingBooking(), {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        console.log(response.data.data, 'service data')
+        return setPendingdata(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    pendingcategory();
+  }, []);
+  console.log("this is pending data",Pendingdata)
+  const[Onworkdata,setOnworkdata]=useState()
+  useEffect(() => {
+    const onworkcategory = async () => {
+      try {
+        const response = await axios.get(OnworkBooking(), {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        console.log(response.data.data, 'service data')
+        return setOnworkdata(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    onworkcategory();
+  }, []);
+  console.log("this is onwork data",Onworkdata)
+
+  const[Appointdata,setAppointdata]=useState()
+  useEffect(() => {
+    const appointcategory = async () => {
+      try {
+        const response = await axios.get(AppointBooking(), {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        return setAppointdata(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    appointcategory();
+  }, []);
+  console.log("this is appoint data",Appointdata)
+
+  const[Completeddata,setCompleteddata]=useState()
+  useEffect(() => {
+    const completedcategory = async () => {
+      try {
+        const response = await axios.get(CompletedBooking(), {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+        return setCompleteddata(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    completedcategory();
+  }, []);
+  console.log("this is completed data",Completeddata)
+
+
   
 
   // console.log("thsiis  is assistant",Assistant.assistance);
@@ -118,13 +201,12 @@ const Booking = () => {
     // console.log("this is data",showdata);
     navigate('/showpage',{state:showdata});
 
-
   };
 
   const editstatus=(item)=>{
     const editeddata=Data.filter((data)=>data.id==item)
     console.log("this is item",editeddata);
-    navigate('/editstatus',{state:editeddata});
+    navigate(`/editstatus/`,{state:editeddata});
   }
   // console.log("this is appoint data",JSON.parse(appointdata[0].bookedProblem).categoryName);
   const assignworker=(name)=>{
@@ -154,58 +236,54 @@ const Booking = () => {
                 <div className="mx-3 nav nav-tabs" id="nav-tab" role="">
                   <button
                     className={`nav-link nav-all ${
-                      activeTab === "nav-all" ? "active" : ""
+                      activeTab === "nav-all" ? "show active" : ""
                     }`}
                     id="nav-all-tab"
                     onClick={() => handleTabClick("nav-all")}
                     type="button"
                     role="tab"
                     aria-controls="nav-all"
-                    aria-selected={activeTab === "nav-all"}
                   >
                     All
                     <div className="mx-2 all-nav">{All}</div>
                   </button>
-                  <button
-                    className={`nav-link nav-appoint ${
-                      activeTab === "nav-appoint" ? "active" : ""
-                    }`}
-                    id="nav-appoint-tab"
-                    onClick={() => handleTabClick("nav-appoint")}
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-appoint"
-                    aria-selected={activeTab === "nav-appoint"}
-                  >
-                    Appoint
-                    <div className="mx-2 appoint-nav">{appointlength}</div>
-                  </button>
+                 
                   <button
                     className={`nav-link nav-pending ${
-                      activeTab === "nav-pending" ? "active" : ""
+                      activeTab === "nav-pending" ? "show active" : ""
                     }`}
                     id="nav-pending-tab"
                     onClick={() => handleTabClick("nav-pending")}
                     type="button"
                     role="tab"
                     aria-controls="nav-pending"
-                    aria-selected={activeTab === "nav-pending"}
                   >
                     Pending
                     <div className="mx-2 pending-nav">{pendinglength}</div>
                   </button>
-                  
+                  <button
+                    className={`nav-link nav-appoint ${
+                      activeTab === "nav-appoint" ? "show active" : ""
+                    }`}
+                    id="nav-appoint-tab"
+                    onClick={() => handleTabClick("nav-appoint")}
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-appoint"
+                  >
+                    Appoint
+                    <div className="mx-2 appoint-nav">{appointlength}</div>
+                  </button>
 
                   <button
                     className={`nav-link nav-onwork ${
-                      activeTab === "nav-onwork" ? "active" : ""
+                      activeTab === "nav-onwork" ? "show active" : ""
                     }`}
                     id="nav-onwork-tab"
                     onClick={() => handleTabClick("nav-onwork")}
                     type="button"
                     role="tab"
                     aria-controls="nav-onwork"
-                    aria-selected={activeTab === "nav-onwork"}
                   >
                     Onwork
                     <div className="mx-2 onwork-nav">{onworklength}</div>
@@ -213,14 +291,14 @@ const Booking = () => {
 
                   <button
                     className={`nav-link nav-completed ${
-                      activeTab === "nav-completed" ? "active" : ""
+                      activeTab === "nav-completed" ? "show active" : ""
                     }`}
                     id="nav-completed-tab"
                     onClick={() => handleTabClick("nav-completed")}
                     type="button"
                     role="tab"
                     aria-controls="nav-completed"
-                    aria-selected={activeTab === "nav-completed"}
+
                   >
                     Completed
                     <div className="mx-2 completed-nav">{completedlength}</div>
@@ -328,9 +406,6 @@ const Booking = () => {
                             </div>
                           </div>
                           </div>
-
-                          
-
                           <div></div>
                         </div>
                       </>
@@ -351,9 +426,9 @@ const Booking = () => {
                     aria-labelledby="nav-appoint-tab"
                     tabIndex="1"
                   >
-                   {appointdata !== undefined ? (
+                   {Appointdata !== undefined ? (
                   <div className="scroll">
-                    {appointdata.map((item) => (
+                    {Appointdata.fetchbooking.map((item) => (
                       <>
                         <div className="row custom-row ">
                           <div className="col-md-1   bookimg">
@@ -366,7 +441,7 @@ const Booking = () => {
                           <div className="col-md-4 details">
                             <div className="fulldetail">
                               FullName
-                              <div className="laptop">{JSON.parse(item.bookedProblem).categoryName}</div>
+                              <div className="laptop">{item.bookedProblem.categoryName}</div>
                               <div className="orderdateandtime">
                                 Order Date:
                                 {item.bookedDate}|
@@ -396,7 +471,7 @@ const Booking = () => {
                                     : item.status === "completed"
                                     ? "completed"
                                     : ""
-                                }`}data-bs-toggle="modal"onClick={()=>assignworker(JSON.parse(item.bookedProblem).categoryName)} data-bs-target="#staticBackdrop">
+                                }`}data-bs-toggle="modal"onClick={()=>assignworker(item.bookedProblem.categoryName)} data-bs-target="#staticBackdrop">
                                 <span>Status :  {item.status.toUpperCase()}</span>
                               </div>
                             </div>
@@ -458,9 +533,9 @@ const Booking = () => {
                     aria-labelledby="nav-completed-tab"
                     tabIndex="2"
                   >
-                    {completeddata !== undefined ? (
+                    {Completeddata !== undefined ? (
                   <div className="scroll">
-                    {completeddata.map((item) => (
+                    {Completeddata.fetchbooking.map((item) => (
                       <>
                         <div className="row custom-row ">
                           <div className="col-md-1   bookimg">
@@ -541,9 +616,9 @@ const Booking = () => {
                     aria-labelledby="nav-pending-tab"
                     tabIndex="3"
                   >
-                    {pendingdata !== undefined ? (
+                    {Pendingdata!== undefined ? (
                   <div className="scroll">
-                    {pendingdata.map((item) => (
+                    {Pendingdata.fetchbooking.map((item) => (
                       <>
                         <div className="row custom-row ">
                           <div className="col-md-1   bookimg">
@@ -593,9 +668,7 @@ const Booking = () => {
 
                             <div className="edit-status"onClick={()=>editstatus(item.id)}>
                               <EditIcon/>
-
                             </div>
-
                             <div className="eye-icon">
                             <div className="verticalline"></div>
                             <div className="eyeicon" onClick={()=>showdata(item.id)}>
@@ -624,9 +697,9 @@ const Booking = () => {
                     aria-labelledby="nav-onwork-tab"
                     tabIndex="4"
                   >
-                   {onworkdata !== undefined ? (
+                   {Onworkdata !== undefined ? (
                   <div className="scroll">
-                    {onworkdata.map((item) => (
+                    {Onworkdata.fetchbooking.map((item) => (
                       <>
                         <div className="row custom-row ">
                           <div className="col-md-1   bookimg">

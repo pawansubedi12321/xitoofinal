@@ -62,7 +62,7 @@ const PublicRoutes = () => {
             <Route path="/addquestion"element={<AddQuesion/>}></Route>
             <Route path="/booking"element={<Booking/>}></Route>
             <Route path='/showpage'element={<ShowPage/>}></Route>
-            <Route path='/edit'element={<Edit/>}></Route>
+            <Route path='/edit/'element={<Edit/>}></Route>
             <Route path="/trialpage"element={<Trialpage/>}></Route>
             <Route path='editstatus'element={<EditStatus/>}></Route>
             <Route path='/editproblemlist'element={<Editproblemlist/>}></Route>
