@@ -27,58 +27,52 @@ const EditStatus = () => {
         console.error('Error fetching data:', error);
       }
     };
+  
 
     fetchData();
   }, []);
-    console.log("data",Data);
-    console.log("this is item",id);
-    const state=Data.filter((data)=>data.id==id)
-    console.log("this is state",state)
-    //const status = state[0].status;
-    // let hash = '';
-    // console.log("this is status",status);
-    // switch (status) {
-    //   case 'pending':
-    //     hash = '#pending';
-    //     break;
-    //   case 'ongoing':
-    //     hash = '#ongoing';
-    //     break;
-    //   case 'appoint':
-    //     hash = '#appoint';
-    //     break;
-    //   case 'completed':
-    //     hash = '#completed';
-    //     break;
-    //   default:
-    //     hash = '#all';
-    //     break;
-    // }
+  const [Assistant,setAssistance]=useState()
+  
+  const editbooking = Data.filter((data) => data.id === id);
+  console.log("this is state", editbooking);
+  // console.log("problem",JSON.parse(editbooking[0].bookedProblem).categoryName)
+  useEffect(() => {
+    const fetchassistance = async () => {
+        // if (Data.length === 0 || !id) return;
+
+
+        // if (editbooking.length === 0 || !editbooking[0].bookedProblem) return;
+
+        try {
+            const response = await axios.get(Getassistancelist(), {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+            console.log("problem",JSON.parse(editbooking[0].bookedProblem).categoryName)
+            const filter = response.data.data.assistance.filter((item) => {
+                return item.active === true &&
+                    item.approved === true &&
+                    (item.category.name === JSON.parse(editbooking[0].bookedProblem).categoryName);
+            });
+            console.log("this is filter", filter);
+            setAssistance(filter);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    fetchassistance();
+}, [Data]); // Ensure Data and id are dependencies
+console.log("this is assistance",Assistant)
     const backbutton=()=>{
         // console.log("this is state",activeTab);
-        navigate(`/booking`,{state:activeTab});
+        navigate('/booking',{state:activeTab});
     }
     const crossbutton=()=>{
-        navigate('/booking');
+        navigate('/booking',{state:activeTab});
     }
-    const [Assistant,setAssistance]=useState()
-  useEffect(()=>{
-    const fetchassistance=async()=>{
-      try{
-        const response=await axios.get(Getassistancelist(),{
-          headers:{
-            Authorization:`Bearer ${token}`,
-          }
-        })
-        const filter=response.data.data.assistance.filter((item,index)=>{return item.active===true && item.approved===true && item.category.name===JSON.parse(state[0].bookedProblem).categoryName})
-        setAssistance(filter)
-      }
-      catch(error){
-      console.log(error)
-      }
-    }
-    fetchassistance()
-  },[])
   const[selectedstatus,setselectedstatus]=useState()
   const selectstatus=(e)=>{
     setselectedstatus(e.target.value)
@@ -87,56 +81,49 @@ const EditStatus = () => {
   const selectassistance=(e)=>{
     setselectedassistance(e.target.value)
   }
-  const update=async()=>{
-    const data={
-      status:selectedstatus,
-      assignTo:selectedassistance
-    }
-    console.log("this is id",state[0].id);
-    try{
-      if (JSON.parse(state[0].assignTo).id !==null){
-        alert('you have already assigned the worker');
-      }
-    }
-    catch(e){
-      console.log("user is not assgined to the worker");
-    }
-    if(data.status==null){
-      alert("please do select the staus")
-    }
-    else if(data.assignTo===null){
-      alert("please do assign the worker")
-    }
-    else{
-      try {
-        const response = await fetch(Updatebooking() + `${state[0].id}`, {
-          method: "PATCH",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-        if (!response.ok) {
-          throw new Error("Network response was not ok.");
-        }
-        else{
-          const data = await response.json();
-          if (data) {
-            alert("assigned  succesfully");
-          }
-          console.log("Response data:", data);
-        }
+  const update = async () => {
+    const data = {
+      status: selectedstatus,
+      assignTo: selectedassistance,
+    };
 
-      } catch (error) {
-        console.error("There was an error:", error);
+    if (!data.status) {
+      alert("Please select the status");
+      return;
+    }
+    if (data.status === 'completed' && data.assignTo) {
+      alert("You can't assign a worker when the status is completed");
+      return;
+    }
+    if (!data.assignTo) {
+      alert("Please assign the worker");
+      return;
+    }
+
+    try {
+      const response = await fetch(Updatebooking() + `${editbooking[0].id}`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Server responded with an error:", errorData);
+        alert(errorData.message || "An error occurred");
+        return;
       }
 
+      const responseData = await response.json();
+      console.log("Response data:", responseData);
+      alert(responseData.message);
+    } catch (error) {
+      console.error("There was an error:", error);
     }
-  }
-  console.log("this is selectedbooking",selectedstatus);
-  console.log("this si assistance",Assistant);
-  console.log("this is selected assistance",selectedassistance);
+  };
   return (
     <div>
         <Loginpage/>
@@ -172,7 +159,7 @@ const EditStatus = () => {
                 <option selected>Select Booking Level</option>
                 <option value="appoint">Appoint</option>
                 <option value="completed">Completed</option>
-                <option value="onwork">Onwork</option>
+                <option value="ongoing">Ongoing</option>
                 <option value="pending">Pending</option>
               </select>
             </div>
@@ -183,7 +170,7 @@ const EditStatus = () => {
               <option>Select your assistance</option>
               {
                Assistant===undefined?"": Assistant.map((item,index)=>(
-                  <option value={item.user.id}>{item.user.name}</option>
+                  <option value={item.user.id}>{item.user.name}-{item.user.phone}-{item.category.name}</option>
                 ))
               }
               </select>

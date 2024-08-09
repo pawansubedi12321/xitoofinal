@@ -9,27 +9,21 @@ import EmptyBooking from "../assets/EmptyBooking.png";
 import "./css/Booking.css";
 import Navbar from "./navbar/Navbar";
 import axios from "axios";
-import { getbooking, token ,Getassistancelist,PendingBooking,OnworkBooking,AppointBooking,CompletedBooking} from "./api/API.jsx";
+import { getbooking, token ,PendingBooking,OnworkBooking,AppointBooking,CompletedBooking} from "./api/API.jsx";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useQuery } from "react-query";
 import Nav from "react-bootstrap/Nav";
 import EditIcon from "@mui/icons-material/Edit";
 import Topbar from './Topbar/Topbar.jsx'
+import Pagination from 'react-bootstrap/Pagination';
+import { act } from "react";
 
 const Booking = () => {
   const {state}=useLocation();
-  console.log("this is state",state);
   const [click, setclick] = useState(false);
   const [booknow, setbooknow] = useState(false);
-  
   const [activeTab, setActiveTab] = useState(`${state===null?"nav-all":state}`);
-  const handleTabClick = (tabId) => {
-    setActiveTab(tabId);
-  };
-  
-  
-
   const navigate = useNavigate();
   const [Data, setData] = useState([]);
   
@@ -41,6 +35,11 @@ const Booking = () => {
   const [show, setshow] = useState(false);
   const[shownotificationicon,setshownotificationicon]=useState(false);
   const [showicon, setshowicon] = useState(false);
+  const[pendingactive,setpendingactive]=useState(1);
+  const[appointactive,setappointactive]=useState(1);
+  const[onworkactive,setonworkactive]=useState(1);
+  const[completedactive,setcompletedactive]=useState(1);
+  const pageSize=10;
   const fetchData = async () => {
     try {
       const response = await axios.get(getbooking(), {
@@ -59,12 +58,14 @@ const Booking = () => {
       setData(fetchedData);
     });
   }, []);
+  
+  
 
   const[Pendingdata,setPendingdata]=useState()
   useEffect(() => {
     const pendingcategory = async () => {
       try {
-        const response = await axios.get(PendingBooking(), {
+        const response = await axios.get(PendingBooking()+`page=1&pageSize=${pageSize}`, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -83,7 +84,7 @@ const Booking = () => {
   useEffect(() => {
     const onworkcategory = async () => {
       try {
-        const response = await axios.get(OnworkBooking(), {
+        const response = await axios.get(OnworkBooking()+`page=1&pageSize=${pageSize}`, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -97,13 +98,13 @@ const Booking = () => {
     };
     onworkcategory();
   }, []);
-  console.log("this is onwork data",Onworkdata)
+
 
   const[Appointdata,setAppointdata]=useState()
   useEffect(() => {
     const appointcategory = async () => {
       try {
-        const response = await axios.get(AppointBooking(), {
+        const response = await axios.get(AppointBooking()+`page=1&pageSize=${pageSize}`, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -116,13 +117,13 @@ const Booking = () => {
     };
     appointcategory();
   }, []);
-  console.log("this is appoint data",Appointdata)
+
 
   const[Completeddata,setCompleteddata]=useState()
   useEffect(() => {
     const completedcategory = async () => {
       try {
-        const response = await axios.get(CompletedBooking(), {
+        const response = await axios.get(CompletedBooking()+`page=1&pageSize=${pageSize}`, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -135,34 +136,30 @@ const Booking = () => {
     };
     completedcategory();
   }, []);
-  console.log("this is completed data",Completeddata)
+
 
 
   
   useEffect(()=>{
       setAll(Data.length);
-    if (Appointdata!==undefined) {
-      setAppointLength(Appointdata.fetchbooking.length);
-    }
+      const pendingData=Data.filter((item,index)=>{return item.status==='pending'})
+      const appointData=Data.filter((item,index)=>{return item.status==='appoint'})
+      const completedData=Data.filter((item,index)=>{return item.status==='completed'})
+      const onworkData=Data.filter((item,index)=>{return item.status==='ongoing'})
+      console.log("this is pendingdata",pendingData)
+      setpendinglength(pendingData.length)
+      setAppointLength(appointData.length)
+      setcompletedlength(completedData.length)
+      setonworklength(onworkData.length)
 
-    if (Completeddata!==undefined) {
-      setcompletedlength(Completeddata.fetchbooking.length);
-    }
+  },[Data,pendinglength,appointlength,completedlength,onworklength])
 
-    if (Onworkdata!==undefined) {
-      setonworklength(Onworkdata.fetchbooking.length);
-    }
-
-    if (Pendingdata!==undefined) {
-      setpendinglength(Pendingdata.fetchbooking.length);
-    }
-  },[Data,Appointdata,Completeddata,Onworkdata,Pendingdata])
   const { isLoading, error, data } = useQuery("bookingData", fetchData); // Provide a unique key for the query
   if (isLoading) return "Loading...";
   if (error) return "An error has occur";
-  console.log("this  is data");
+
   console.log(data);
-  console.log("end");
+
   const mousedown = () => {
     setclick(false);
   };
@@ -170,22 +167,247 @@ const Booking = () => {
     setbooknow(true);
   };
   const showdata = (item) => {
-    console.log("this is id",item);
+
     const showdata=Data.filter((data)=>data.id===item);
     navigate('/showpage',{state:showdata});
 
   };
 
   const editstatus=(item)=>{
-    console.log("this is activetab",activeTab);
+
     
     navigate(`/editstatus/${item}/${activeTab}`);
   }
   const assignworker=(name)=>{
-    console.log("this is name",name)
+
     const x=Assistant.assistance.filter((item)=>{item.category.name=name})
-    console.log("this is assistantcategory",x);
+
   }
+  const handleTabClick = async(tabId) => {
+    setActiveTab(tabId);
+  };
+
+
+let pendingitems = [];
+let pendingnumber=Math.round(pendinglength/pageSize)===0?1:Math.round(pendinglength/pageSize)
+
+console.log("this is pendingnumber",pendingnumber);
+  
+  const Pendingpagination=async(item)=>{
+    // console.log("this is item",item)
+    setpendingactive(item);
+
+    if(item===-1)
+    {
+      setpendingactive(0)
+    }
+    else if(item>pendingnumber)
+    {
+      setpendingactive(pendingnumber)
+    }
+    else{
+
+    try {
+          const response = await axios.get(PendingBooking()+`page=${item}&pageSize=${pageSize}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          });
+          console.log(response.data.data, 'service data')
+          return setPendingdata(response.data.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+          
+      }
+  }
+
+
+for (let number = 1; number <= pendingnumber; number++) {
+  
+  pendingitems.push(
+    <Pagination.Item onClick={()=>Pendingpagination(number)} key={number} active={number === pendingactive}>
+      {number}
+    </Pagination.Item>,
+  );
+}
+
+const PaginationBasic= (
+  <div>
+    <Pagination size="sm">   <Pagination.First onClick={()=>Pendingpagination(1)} /><Pagination.Prev onClick={()=>Pendingpagination(pendingactive-1)}/>{pendingitems}<Pagination.Next onClick={()=>Pendingpagination(pendingactive+1)}/><Pagination.Last  onClick={()=>Pendingpagination(pendingnumber)}/></Pagination>
+  </div>
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let appointitems = [];
+let appointnumber=Math.round(appointlength/pageSize)===0?1:Math.round(appointlength/pageSize)
+console.log("this is appointnumber",appointnumber);
+  const Appointpagination=async(item)=>{
+    setappointactive(item);
+    if(item===-1)
+    {
+      setappointactive(0)
+    }                                  
+    else if(item>appointnumber)
+    {
+      setappointactive(appointnumber)
+    }
+    else{
+    try {
+          const response = await axios.get(AppointBooking()+`page=${item}&pageSize=${pageSize}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          });
+          console.log(response.data.data, 'service data')
+          return setAppointdata(response.data.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+          
+      }
+  }
+
+
+for (let number = 1; number <=appointnumber; number++) {
+  
+  appointitems.push(
+    <Pagination.Item onClick={()=>Appointpagination(number)} key={number} active={number ===appointactive}>
+      {number}
+    </Pagination.Item>,
+  );
+}
+const AppointPaginate= (
+  <div>
+    <Pagination size="sm">   <Pagination.First onClick={()=>Appointpagination(1)} /><Pagination.Prev onClick={()=>Appointpagination(appointactive-1)}/>{appointitems}<Pagination.Next onClick={()=>Appointpagination(appointactive+1)}/><Pagination.Last  onClick={()=>Appointpagination(appointnumber)}/></Pagination>
+  </div>
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+let ongoingitems = [];
+
+let ongoingnumber=Math.round(onworklength/pageSize)===0?1:Math.round(onworklength/pageSize)
+// console.log("this is appointnumber",appointnumber);
+  const Onworkpagination=async(item)=>{
+    setonworkactive(item);
+    if(item===-1)
+    {
+      setonworkactive(0)
+    }                                  
+    else if(item>ongoingnumber)
+    {
+      setonworkactive(ongoingnumber)
+    }
+    else{
+    try {
+          const response = await axios.get(OnworkBooking()+`page=${item}&pageSize=${pageSize}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          });
+          console.log(response.data.data, 'service data')
+          return setOnworkdata(response.data.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+          
+      }
+  }
+
+
+for (let number = 1; number <=ongoingnumber; number++) {
+  
+  ongoingitems.push(
+    <Pagination.Item onClick={()=>Onworkpagination(number)} key={number} active={number ===onworkactive}>
+      {number}
+    </Pagination.Item>,
+  );
+}
+const Onworkpaginate= (
+  <div>
+    <Pagination size="sm">   <Pagination.First onClick={()=>Onworkpagination(1)} /><Pagination.Prev onClick={()=>Onworkpagination(onworkactive-1)}/>{ongoingitems}<Pagination.Next onClick={()=>Onworkpagination(onworkactive+1)}/><Pagination.Last  onClick={()=>Onworkpagination(ongoingnumber)}/></Pagination>
+  </div>
+);
+
+
+
+
+
+
+let completeditems = [];
+let completednumber=Math.round(completedlength/pageSize)===0?1:Math.round(completedlength/pageSize)
+  const Completedpagination=async(item)=>{
+    setcompletedactive(item);
+    if(item===-1)
+    {
+      setcompletedactive(0)
+    }                                  
+    else if(item>completednumber)
+    {
+      setcompletedactive(completednumber)
+    }
+    else{
+    try {
+          const response = await axios.get(CompletedBooking()+`page=${item}&pageSize=${pageSize}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          });
+          console.log(response.data.data, 'service data')
+          return setCompleteddata(response.data.data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+          
+      }
+  }
+
+
+for (let number = 1; number <=completednumber; number++) {
+  console.log("num",number)
+  completeditems.push(
+    <Pagination.Item onClick={()=>Completedpagination(number)} key={number} active={number ===completedactive}>
+      {number}
+    </Pagination.Item>,
+  );
+}
+const Completedpaginate= (
+
+  <div>
+    <Pagination size="sm">   <Pagination.First onClick={()=>Completedpagination(1)} /><Pagination.Prev onClick={()=>Completedpagination(completedactive-1)}/>{completeditems}<Pagination.Next onClick={()=>Completedpagination(completedactive+1)}/><Pagination.Last  onClick={()=>Completedpagination(completednumber)}/></Pagination>
+  </div>
+);
+// console.log("this s completed items ",completeditems);
+
+
   return (
     <div className="section-padding section-bg" onMouseOut={mousedown}>
       <div className="row secondpage">
@@ -324,7 +546,7 @@ const Booking = () => {
                           </div>
                           <div className="col-md-4 details">
                             <div className="fulldetail">
-                              FullName
+                              {JSON.parse(item.bookedBy).name}
                               <div className="laptop">{JSON.parse(item.bookedProblem).categoryName}</div>
                               <div className="orderdateandtime">
                                 Order Date:
@@ -333,6 +555,7 @@ const Booking = () => {
                                   {item.timePeriod}
                                 </span>
                               </div>
+                              {/* {JSON.parse(item.location).lat}and{JSON.parse(item.location).lng} */}
                               <div className="location">Location:{item.location}</div>
                             </div>
                           </div>
@@ -349,7 +572,7 @@ const Booking = () => {
                                     : item.status === "pending"
                                     ? "pending"
                                     : item.status === "ongoing"
-                                    ? "onwork"
+                                    ? "ongoing"
                                     : item.status === "completed"
                                     ? "completed"
                                     : ""
@@ -386,7 +609,88 @@ const Booking = () => {
                 )}
                   </div>
 
+                  <div
+                    className={`tab-pane fade ${
+                      activeTab === "nav-pending" ? "show active" : ""
+                    }`}
+                    id="nav-pending"
+                    role="tabpanel"
+                    aria-labelledby="nav-pending-tab"
+                    tabIndex="3"
+                  >
+                    {Pendingdata!== undefined ? (
+                  <div className="scroll">
+                    {Pendingdata.fetchbooking.map((item) => (
+                      <>
+                        <div className="row custom-row ">
+                          <div className="col-md-1   bookimg">
+                            <img
+                              src={EmptyBooking}
+                              class="img-fluid bookingimage "
+                              alt="Responsive image"
+                            />
+                          </div>
+                          <div className="col-md-4 details">
+                            <div className="fulldetail">
+                            {item.bookedBy.name}
+                              <div className="laptop">{item.bookedProblem.categoryName}</div>
+                              <div className="orderdateandtime">
+                                Order Date:
+                                {item.bookedDate}|
+                                <span className="time-33">
+                                  {item.timePeriod}
+                                </span>
+                              </div>
+                              <div className="location">Location:{`{"lat":"${JSON.parse(item.location).lat}"`},{`"lng":"${JSON.parse(item.location).lng}"}`}</div>
+                            </div>
+                          </div>
+                          <div className="col-md-3 assistantname">
+                            <h6>{item.assignTo===undefined?"":item.assignTo.name}</h6>
+                            <h6>{item.assignTo===undefined?"":item.assignTo.phone}</h6>
+                          </div>
+                          <div className="col-md-4 statusandeye ">
+                            <div className="status">
+                              <div
+                                className={`${
+                                  item.status === "appoint"
+                                    ? "appoint"
+                                    : item.status === "pending"
+                                    ? "pending"
+                                    : item.status === "onwork"
+                                    ? "onwork"
+                                    : item.status === "completed"
+                                    ? "completed"
+                                    : ""
+                                }`}
+                              >
+                                <span>Status : {item.status.toUpperCase()}</span>
+                              </div>
+                            </div>
 
+                            <div className="edit-status"onClick={()=>editstatus(item.id)}>
+                              <EditIcon/>
+                            </div>
+                            <div className="eye-icon">
+                            <div className="verticalline"></div>
+                            <div className="eyeicon" onClick={()=>showdata(item.id)}>
+                              <RemoveRedEyeIcon />
+                            </div>
+                          </div>
+                          </div>
+
+                          
+
+                          <div></div>
+                        </div>
+
+                      </>
+                    ))}
+                    {PaginationBasic}
+                  </div>
+                ) : (
+                  ""
+                )}
+                  </div>
                   <div
                     className={`tab-pane fade ${
                       activeTab === "nav-appoint" ? "show active" : ""
@@ -410,7 +714,7 @@ const Booking = () => {
                           </div>
                           <div className="col-md-4 details">
                             <div className="fulldetail">
-                              FullName
+                            {item.bookedBy.name}
                               <div className="laptop">{item.bookedProblem.categoryName}</div>
                               <div className="orderdateandtime">
                                 Order Date:
@@ -419,7 +723,8 @@ const Booking = () => {
                                   {item.timePeriod}
                                 </span>
                               </div>
-                              <div className="location">Location:{item.location}</div>
+                              {/* {"lat":"27.4345","lng":"85.782"} */}
+                              <div className="location">Location:{`{"lat":"${JSON.parse(item.location).lat}"`},{`"lng":"${JSON.parse(item.location).lng}"}`}</div>
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
@@ -487,8 +792,10 @@ const Booking = () => {
 
                           <div></div>
                         </div>
+                        
                       </>
                     ))}
+                    {AppointPaginate}
                   </div>
                 ) : (
                   ""
@@ -517,7 +824,7 @@ const Booking = () => {
                           </div>
                           <div className="col-md-4 details">
                             <div className="fulldetail">
-                              FullName
+                            {item.bookedBy.name}
                               <div className="laptop">laptop</div>
                               <div className="orderdateandtime">
                                 Order Date:
@@ -526,7 +833,7 @@ const Booking = () => {
                                   {item.timePeriod}
                                 </span>
                               </div>
-                              <div className="location">Location:panauti</div>
+                              <div className="location">Location:{`{"lat":"${JSON.parse(item.location).lat}"`},{`"lng":"${JSON.parse(item.location).lng}"}`}</div>
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
@@ -572,91 +879,13 @@ const Booking = () => {
                         </div>
                       </>
                     ))}
+                    {Completedpaginate}
                   </div>
                 ) : (
                   ""
                 )}
                   </div>
-                  <div
-                    className={`tab-pane fade ${
-                      activeTab === "nav-pending" ? "show active" : ""
-                    }`}
-                    id="nav-pending"
-                    role="tabpanel"
-                    aria-labelledby="nav-pending-tab"
-                    tabIndex="3"
-                  >
-                    {Pendingdata!== undefined ? (
-                  <div className="scroll">
-                    {Pendingdata.fetchbooking.map((item) => (
-                      <>
-                        <div className="row custom-row ">
-                          <div className="col-md-1   bookimg">
-                            <img
-                              src={EmptyBooking}
-                              class="img-fluid bookingimage "
-                              alt="Responsive image"
-                            />
-                          </div>
-                          <div className="col-md-4 details">
-                            <div className="fulldetail">
-                              FullName
-                              <div className="laptop">laptop</div>
-                              <div className="orderdateandtime">
-                                Order Date:
-                                {item.bookedDate}|
-                                <span className="time-33">
-                                  {item.timePeriod}
-                                </span>
-                              </div>
-                              <div className="location">Location:panauti</div>
-                            </div>
-                          </div>
-                          <div className="col-md-3 assistantname">
-                            <h6>{item.assignTo===undefined?"":item.assignTo.name}</h6>
-                            <h6>{item.assignTo===undefined?"":item.assignTo.phone}</h6>
-                          </div>
-                          <div className="col-md-4 statusandeye ">
-                            <div className="status">
-                              <div
-                                className={`${
-                                  item.status === "appoint"
-                                    ? "appoint"
-                                    : item.status === "pending"
-                                    ? "pending"
-                                    : item.status === "onwork"
-                                    ? "onwork"
-                                    : item.status === "completed"
-                                    ? "completed"
-                                    : ""
-                                }`}
-                              >
-                                <span>Status : {item.status.toUpperCase()}</span>
-                              </div>
-                            </div>
-
-                            <div className="edit-status"onClick={()=>editstatus(item.id)}>
-                              <EditIcon/>
-                            </div>
-                            <div className="eye-icon">
-                            <div className="verticalline"></div>
-                            <div className="eyeicon" onClick={()=>showdata(item.id)}>
-                              <RemoveRedEyeIcon />
-                            </div>
-                          </div>
-                          </div>
-
-                          
-
-                          <div></div>
-                        </div>
-                      </>
-                    ))}
-                  </div>
-                ) : (
-                  ""
-                )}
-                  </div>
+                 
                   <div
                     className={`tab-pane fade ${
                       activeTab === "nav-onwork" ? "show active" : ""
@@ -680,7 +909,7 @@ const Booking = () => {
                           </div>
                           <div className="col-md-4 details">
                             <div className="fulldetail">
-                              FullName
+                            {item.bookedBy.name}
                               <div className="laptop">laptop</div>
                               <div className="orderdateandtime">
                                 Order Date:
@@ -689,7 +918,7 @@ const Booking = () => {
                                   {item.timePeriod}
                                 </span>
                               </div>
-                              <div className="location">Location:panauti</div>
+                              <div className="location">Location:{`{"lat":"${JSON.parse(item.location).lat}"`},{`"lng":"${JSON.parse(item.location).lng}"}`}</div>
                             </div>
                           </div>
                           <div className="col-md-3 assistantname">
@@ -734,13 +963,18 @@ const Booking = () => {
                         </div>
                       </>
                     ))}
+                    {Onworkpaginate}
                   </div>
                 ) : (
                   ""
                 )}
+                
+                
                   </div>
+                  
                 </div>
                 
+
               
             </div>
           </div>
